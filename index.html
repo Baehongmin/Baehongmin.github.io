@@ -313,7 +313,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/15/environmental-sensor-1/" class="post-title-link" itemprop="url">environmental-sensor-1</a>
+                <a href="/2019/04/15/environmental-sensor-1/" class="post-title-link" itemprop="url">환경센서 구성해보기(1)</a>
               
             
           </h1>
@@ -338,7 +338,7 @@
                 
               
 
-              <time title="Created: 2019-04-15 17:14:46 / Modified: 17:16:06" itemprop="dateCreated datePublished" datetime="2019-04-15T17:14:46+09:00">2019-04-15</time>
+              <time title="Created: 2019-04-15 17:14:46 / Modified: 17:19:19" itemprop="dateCreated datePublished" datetime="2019-04-15T17:14:46+09:00">2019-04-15</time>
             
 
             
@@ -418,7 +418,7 @@
 <li>플랫폼으로 데이터 전송방법</li>
 <li>플랫폼 데이터를 스마트 미러에 띄우기</li>
 </ol>
-<h2 id="라즈베리파이-SETTING"><a href="#라즈베리파이-SETTING" class="headerlink" title="라즈베리파이 SETTING"></a>라즈베리파이 SETTING</h2><p>소프트 웨어는 <strong>Raspbian Stretch</strong> 를 사용하였습니다. 하드웨어는 라즈베리파이 3B 버전을 사용하였습니다.<br>라즈비안 Stretch 버전은 <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">라즈베리파이 홈페이지</a>에 가셔서 다운로드 받으시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/rasbianStrechDownload.jpg?raw=true" alt="라즈비안 다운로드 페이지"><br>위에서 받은 라즈비안 이미지를 SD카드에 업로드 시켜야 합니다.<br>업로드 할때 사용한 프로그램은 <strong>Etcher</strong> 라는 프로그램입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/palenaEtcher.png?raw=true" alt="라즈비안 다운로드 페이지"><br>SD카드는 라즈비안 이미지 크기보다 큰 용량을 가지고 있어야 합니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/desktop.png?raw=true" alt="데스크탑 페이지"><br>정상적으로 이미지를 SD카드에 옮기고 라즈베리를 켜게 되면 위와 같은 바탕화면이 나오게 됩니다. </p>
+<h2 id="라즈베리파이-SETTING"><a href="#라즈베리파이-SETTING" class="headerlink" title="라즈베리파이 SETTING"></a>라즈베리파이 SETTING</h2><p>소프트 웨어는 <strong>Raspbian Stretch</strong> 를 사용하였습니다. 하드웨어는 라즈베리파이 3B 버전을 사용하였습니다.<br>라즈비안 Stretch 버전은 <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">라즈베리파이 홈페이지</a>에 가셔서 다운로드 받으시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/rasbianStrechDownload.jpg?raw=true" alt="라즈비안 다운로드 페이지"><br>위에서 받은 라즈비안 이미지를 SD카드에 업로드 시켜야 합니다.<br>업로드 할때 사용한 프로그램은 <strong>Etcher</strong> 라는 프로그램입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/balenaEtcher.png?raw=true" alt="라즈비안 다운로드 페이지"><br>SD카드는 라즈비안 이미지 크기보다 큰 용량을 가지고 있어야 합니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/desktop.png?raw=true" alt="데스크탑 페이지"><br>정상적으로 이미지를 SD카드에 옮기고 라즈베리를 켜게 되면 위와 같은 바탕화면이 나오게 됩니다. </p>
 <h3 id="라즈베리-파이-3-시리얼-블루투스-문제"><a href="#라즈베리-파이-3-시리얼-블루투스-문제" class="headerlink" title="라즈베리 파이 3 시리얼/블루투스 문제"></a>라즈베리 파이 3 시리얼/블루투스 문제</h3><blockquote>
 <p>라즈베리 파이 3로 오면서 무선랜/블루투스 기능 추가를 위해 Broadcom의 BCM43438 칩을 사용하고 있는데 무선랜<br>기능은 SDIO로 연결하지만 블루투스 기능은 UART0으로 연결을 하고 시리얼 포트 핀은 UART1에 연결되도록 구조가<br>변경되었다. 그러므로 그 동안 아무 문제 없이 시리얼 포트를 사용하던 프로그램이 라즈베리 파이 3로 오면서 블루투스를 사용하게<br>되면 제대로 동작을 할 수 없게 되어 버린 것이다.</p>
 </blockquote>
