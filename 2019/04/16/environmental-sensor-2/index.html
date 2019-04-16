@@ -96,17 +96,28 @@
 
 
 
-  <meta name="description" content="제목나의 첫번째 포스트입니다.">
+  <meta name="description" content="이번 장에서는 센서들과 RaspberryPi 연결 Arduino 연결에 대해서 작성 하도록 하겠습니다. 환경센서 구성해보기(2)준비물  라즈베리파이 PMS5003 (먼지센서) DHT11 (온습도센서) 라즈베리파이 7인치 터치스크린 nodeMCU 1.44 tft 패널  목차 라즈베리파이 SETTING SENSOR CONNECTION SENSOR VALUE">
+<meta name="keywords" content="tech,raspberry,environmental,sensor,H&#x2F;W">
 <meta property="og:type" content="article">
-<meta property="og:title" content="first-post">
-<meta property="og:url" content="https://baehongmin.github.io/2019/04/15/first-post/index.html">
+<meta property="og:title" content="환경센서 구성해보기(2)">
+<meta property="og:url" content="https://baehongmin.github.io/2019/04/16/environmental-sensor-2/index.html">
 <meta property="og:site_name" content="Kongs">
-<meta property="og:description" content="제목나의 첫번째 포스트입니다.">
+<meta property="og:description" content="이번 장에서는 센서들과 RaspberryPi 연결 Arduino 연결에 대해서 작성 하도록 하겠습니다. 환경센서 구성해보기(2)준비물  라즈베리파이 PMS5003 (먼지센서) DHT11 (온습도센서) 라즈베리파이 7인치 터치스크린 nodeMCU 1.44 tft 패널  목차 라즈베리파이 SETTING SENSOR CONNECTION SENSOR VALUE">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-15T02:47:35.994Z">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypi3bPinmap.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pms5003_pinout.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrysensor.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/realback.jpg?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/nodemcu_pins.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/oled.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht.png?raw=true">
+<meta property="og:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust.png?raw=true">
+<meta property="og:updated_time" content="2019-04-16T02:39:27.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="first-post">
-<meta name="twitter:description" content="제목나의 첫번째 포스트입니다.">
+<meta name="twitter:title" content="환경센서 구성해보기(2)">
+<meta name="twitter:description" content="이번 장에서는 센서들과 RaspberryPi 연결 Arduino 연결에 대해서 작성 하도록 하겠습니다. 환경센서 구성해보기(2)준비물  라즈베리파이 PMS5003 (먼지센서) DHT11 (온습도센서) 라즈베리파이 7인치 터치스크린 nodeMCU 1.44 tft 패널  목차 라즈베리파이 SETTING SENSOR CONNECTION SENSOR VALUE">
+<meta name="twitter:image" content="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true">
 
 
 
@@ -114,7 +125,7 @@
 
   
   
-  <link rel="canonical" href="https://baehongmin.github.io/2019/04/15/first-post/">
+  <link rel="canonical" href="https://baehongmin.github.io/2019/04/16/environmental-sensor-2/">
 
 
 
@@ -124,7 +135,7 @@
   };
 </script>
 
-  <title>first-post | Kongs</title>
+  <title>환경센서 구성해보기(2) | Kongs</title>
   
 
 
@@ -296,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/first-post/">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/16/environmental-sensor-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hongmin Bae">
@@ -313,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">first-post
+          <h1 class="post-title" itemprop="name headline">환경센서 구성해보기(2)
 
               
             
@@ -339,7 +350,7 @@
                 
               
 
-              <time title="Created: 2019-04-15 11:46:09 / Modified: 11:47:35" itemprop="dateCreated datePublished" datetime="2019-04-15T11:46:09+09:00">2019-04-15</time>
+              <time title="Created: 2019-04-16 11:38:23 / Modified: 11:39:27" itemprop="dateCreated datePublished" datetime="2019-04-16T11:38:23+09:00">2019-04-16</time>
             
 
             
@@ -362,8 +373,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/15/first-post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/first-post/" itemprop="commentCount"></span>
+                <a href="/2019/04/16/environmental-sensor-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/environmental-sensor-2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,7 +382,7 @@
 
           
           
-            <span id="/2019/04/15/first-post/" class="leancloud_visitors" data-flag-title="first-post">
+            <span id="/2019/04/16/environmental-sensor-2/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(2)">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -402,7 +413,46 @@
       
 
       
-        <h2 id="제목"><a href="#제목" class="headerlink" title="제목"></a>제목</h2><p>나의 첫번째 포스트입니다.</p>
+        <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>이번 장에서는 센서들과 <code>RaspberryPi</code> 연결 <code>Arduino</code> 연결에 대해서 작성 하도록 하겠습니다.</p>
+<h1 id="환경센서-구성해보기-2"><a href="#환경센서-구성해보기-2" class="headerlink" title="환경센서 구성해보기(2)"></a>환경센서 구성해보기(2)</h1><p><strong>준비물</strong></p>
+<ul>
+<li>라즈베리파이</li>
+<li>PMS5003 (먼지센서)</li>
+<li>DHT11 (온습도센서)</li>
+<li>라즈베리파이 7인치 터치스크린</li>
+<li>nodeMCU</li>
+<li>1.44 tft 패널</li>
+</ul>
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
+<li>라즈베리파이 SETTING</li>
+<li><strong>SENSOR CONNECTION</strong></li>
+<li>SENSOR VALUE 가져오는 방법 및 코드</li>
+<li>SENSOR VALUE를 화면으로 띄우는 방법</li>
+<li>플랫폼으로 데이터 전송방법</li>
+<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
+</ol>
+<h2 id="라즈베리파이-미세먼지-amp-온습도센서"><a href="#라즈베리파이-미세먼지-amp-온습도센서" class="headerlink" title="라즈베리파이 + 미세먼지 &amp; 온습도센서"></a>라즈베리파이 + 미세먼지 &amp; 온습도센서</h2><p><code>라즈베리파이 3b</code> 의 핀 맵은 아래와 같습니다. 라즈베리파이 다른 버전을 사용하게된다면 아래 핀맵과 비교하여 같은 Pin 에다가 연결 하시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypi3bPinmap.png?raw=true" alt="라즈베리 파이 핀맵"></p>
+<p>아래 이미지는 <code>PM5003</code>의 <code>PinMap</code> 입니다.<br>사용하는 핀은 1,2,4,5 번 핀을 사용할 예정입니다. 나머지 핀은 사용하지 않기 때문에 선을 연결 할 경우 모든 선을 연결 하지 말고 4개의 선만 연결하여 사용 할 수 있도록 개량이 필요합니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pms5003_pinout.png?raw=true" alt="라즈비안 다운로드 페이지"></p>
+<p><code>DHT11</code> 은 따로 핀맵을 작성하지 않겠습니다. 제가 가지고 있는 <code>DHT11</code>의 경우 센서에 <code>GND, VCC, DATA</code> 핀이 어디인지 표시되어 있고, 또한 <code>DHT11</code> 센서의 경우 매우 많은 제조사가 있기 때문에 자신이 사용하는 제조사의 Pin Map을 참고 하시기 바랍니다. 대부분 3개에서 4개의 핀이 존재하는데 저는 위의 3개의 핀만 사용합니다.</p>
+<h3 id="라즈베리-파이와-센서-연결"><a href="#라즈베리-파이와-센서-연결" class="headerlink" title="라즈베리 파이와 센서 연결"></a>라즈베리 파이와 센서 연결</h3><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrysensor.png?raw=true" alt="라즈베리 센서 연결"></p>
+<p>라즈베리 파이와 센서 연결은 위의 보이는 핀에다가 연결해 주시면 됩니다.<br><code>PMS5003</code> 센서의 1,2 번 PIN은 <code>VCC</code>, <code>GND</code>이기 때문에 라즈베리 파이의 <code>VCC</code>, <code>GND</code> 원하시는 곳에 연결 해 주시면 됩니다.<br><code>DHT11</code> 센서의 <code>VCC</code>, <code>GND</code> 도 마찬가지로 원하는 곳에 연결해 주면 됩니다.<br>라즈베리 파이의 <code>VCC</code>, <code>GND</code> 어디에 연결해도 상관 없습니다.</p>
+<blockquote>
+<p>라즈베리 파이 7인치 연결하는 방법<br><a href="https://youtu.be/hqdz66Y-H7M" target="_blank" rel="noopener">Youtube</a> 링크 입니다.</p>
+</blockquote>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/realback.jpg?raw=true" alt="실제 라즈베리파이 연결 모습"></p>
+<p><strong><code>라즈베리 파이 전원 용량이 부족할 수도 있으니 충분한 전력 용량을 가진 어댑터를 사용하시길 권장합니다.</code></strong></p>
+<h2 id="NodeMCU-Sensor"><a href="#NodeMCU-Sensor" class="headerlink" title="NodeMCU + Sensor"></a>NodeMCU + Sensor</h2><p><code>미니 Arduino</code> 라고 불리는 <code>NodeMCU</code>와 <code>Sensor</code> 연결 방법입니다.<br>라즈베리파이로 모두 구성해도 되지만 센서가 늘어날 경우 <code>Touch panel</code>이 가격대가 상당하기 때문에 가격적인 면이 효율성이 떨어집니다.<br>또한, <code>DashBoard</code> 를 만들 예정이기 때문에 사실상 <code>Panel</code>은 필요없고 센서에서 플랫폼으로 직접 데이터를 쏴주기만 하면 되기 때문에 <code>Device</code>에서 <code>Wifi</code> 가 되는 <code>NodeMCU</code>를 사용하게 되었습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/nodemcu_pins.png?raw=true" alt="node MCU의 PinMap"></p>
+<p>NodeMCU의 핀맵은 위와 같습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/oled.png?raw=true" alt="OLED연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht.png?raw=true" alt="DHT연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust.png?raw=true" alt="dust연결"></p>
+<p>위와 같이 <code>OLED</code> <code>DHT</code> <code>DUST</code> 연결해 주시면 됩니다.<br><code>Software</code> 코드는 다음 챕터에서 다루도록 하겠습니다.</p>
+<h3 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h3><blockquote>
+<p>Sensor 값을 RaspberryPi 로 가져오는 부분과 NodeMCU로 가져오도록 해야합니다.<br>              RaspberryPi는 직접적으로 화면에서 센서 데이터를 가져올 수 있도록 하고, NodeMCU는 플랫폼으로 직접<br>              전송할 수 있도록 합니다.</p>
+</blockquote>
 
       
     </div>
@@ -424,6 +474,20 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+            <a href="/tags/raspberry/" rel="tag"># raspberry</a>
+          
+            <a href="/tags/environmental/" rel="tag"># environmental</a>
+          
+            <a href="/tags/sensor/" rel="tag"># sensor</a>
+          
+            <a href="/tags/H-W/" rel="tag"># H/W</a>
+          
+        </div>
+      
 
       
       
@@ -433,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/15/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/04/15/environmental-sensor-1/" rel="next" title="환경센서 구성해보기(1)">
+                <i class="fa fa-chevron-left"></i> 환경센서 구성해보기(1)
               </a>
             
           </div>
@@ -442,10 +506,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/15/environmental-sensor-1/" rel="prev" title="환경센서 구성해보기(1)">
-                환경센서 구성해보기(1) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#제목"><span class="nav-number">1.</span> <span class="nav-text">제목</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#환경센서-구성해보기-2"><span class="nav-number">1.</span> <span class="nav-text">환경센서 구성해보기(2)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#목차"><span class="nav-number">1.1.</span> <span class="nav-text">목차</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#라즈베리파이-미세먼지-amp-온습도센서"><span class="nav-number">1.2.</span> <span class="nav-text">라즈베리파이 + 미세먼지 &amp; 온습도센서</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#라즈베리-파이와-센서-연결"><span class="nav-number">1.2.1.</span> <span class="nav-text">라즈베리 파이와 센서 연결</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeMCU-Sensor"><span class="nav-number">1.3.</span> <span class="nav-text">NodeMCU + Sensor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#이후-해야될-작업"><span class="nav-number">1.3.1.</span> <span class="nav-text">이후 해야될 작업</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -763,9 +823,9 @@
 
 <script>
   var disqus_config = function() {
-    this.page.url = "https://baehongmin.github.io/2019/04/15/first-post/";
-    this.page.identifier = "2019/04/15/first-post/";
-    this.page.title = 'first-post';
+    this.page.url = "https://baehongmin.github.io/2019/04/16/environmental-sensor-2/";
+    this.page.identifier = "2019/04/16/environmental-sensor-2/";
+    this.page.title = '환경센서 구성해보기(2)';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');

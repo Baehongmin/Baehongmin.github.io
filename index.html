@@ -293,6 +293,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/16/environmental-sensor-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/16/environmental-sensor-2/" class="post-title-link" itemprop="url">환경센서 구성해보기(2)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-16 11:38:23 / Modified: 11:39:27" itemprop="dateCreated datePublished" datetime="2019-04-16T11:38:23+09:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/16/environmental-sensor-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/environmental-sensor-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/16/environmental-sensor-2/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(2)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>이번 장에서는 센서들과 <code>RaspberryPi</code> 연결 <code>Arduino</code> 연결에 대해서 작성 하도록 하겠습니다.</p>
+<h1 id="환경센서-구성해보기-2"><a href="#환경센서-구성해보기-2" class="headerlink" title="환경센서 구성해보기(2)"></a>환경센서 구성해보기(2)</h1><p><strong>준비물</strong></p>
+<ul>
+<li>라즈베리파이</li>
+<li>PMS5003 (먼지센서)</li>
+<li>DHT11 (온습도센서)</li>
+<li>라즈베리파이 7인치 터치스크린</li>
+<li>nodeMCU</li>
+<li>1.44 tft 패널</li>
+</ul>
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
+<li>라즈베리파이 SETTING</li>
+<li><strong>SENSOR CONNECTION</strong></li>
+<li>SENSOR VALUE 가져오는 방법 및 코드</li>
+<li>SENSOR VALUE를 화면으로 띄우는 방법</li>
+<li>플랫폼으로 데이터 전송방법</li>
+<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
+</ol>
+<h2 id="라즈베리파이-미세먼지-amp-온습도센서"><a href="#라즈베리파이-미세먼지-amp-온습도센서" class="headerlink" title="라즈베리파이 + 미세먼지 &amp; 온습도센서"></a>라즈베리파이 + 미세먼지 &amp; 온습도센서</h2><p><code>라즈베리파이 3b</code> 의 핀 맵은 아래와 같습니다. 라즈베리파이 다른 버전을 사용하게된다면 아래 핀맵과 비교하여 같은 Pin 에다가 연결 하시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypi3bPinmap.png?raw=true" alt="라즈베리 파이 핀맵"></p>
+<p>아래 이미지는 <code>PM5003</code>의 <code>PinMap</code> 입니다.<br>사용하는 핀은 1,2,4,5 번 핀을 사용할 예정입니다. 나머지 핀은 사용하지 않기 때문에 선을 연결 할 경우 모든 선을 연결 하지 말고 4개의 선만 연결하여 사용 할 수 있도록 개량이 필요합니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pms5003_pinout.png?raw=true" alt="라즈비안 다운로드 페이지"></p>
+<p><code>DHT11</code> 은 따로 핀맵을 작성하지 않겠습니다. 제가 가지고 있는 <code>DHT11</code>의 경우 센서에 <code>GND, VCC, DATA</code> 핀이 어디인지 표시되어 있고, 또한 <code>DHT11</code> 센서의 경우 매우 많은 제조사가 있기 때문에 자신이 사용하는 제조사의 Pin Map을 참고 하시기 바랍니다. 대부분 3개에서 4개의 핀이 존재하는데 저는 위의 3개의 핀만 사용합니다.</p>
+<h3 id="라즈베리-파이와-센서-연결"><a href="#라즈베리-파이와-센서-연결" class="headerlink" title="라즈베리 파이와 센서 연결"></a>라즈베리 파이와 센서 연결</h3><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrysensor.png?raw=true" alt="라즈베리 센서 연결"></p>
+<p>라즈베리 파이와 센서 연결은 위의 보이는 핀에다가 연결해 주시면 됩니다.<br><code>PMS5003</code> 센서의 1,2 번 PIN은 <code>VCC</code>, <code>GND</code>이기 때문에 라즈베리 파이의 <code>VCC</code>, <code>GND</code> 원하시는 곳에 연결 해 주시면 됩니다.<br><code>DHT11</code> 센서의 <code>VCC</code>, <code>GND</code> 도 마찬가지로 원하는 곳에 연결해 주면 됩니다.<br>라즈베리 파이의 <code>VCC</code>, <code>GND</code> 어디에 연결해도 상관 없습니다.</p>
+<blockquote>
+<p>라즈베리 파이 7인치 연결하는 방법<br><a href="https://youtu.be/hqdz66Y-H7M" target="_blank" rel="noopener">Youtube</a> 링크 입니다.</p>
+</blockquote>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/realback.jpg?raw=true" alt="실제 라즈베리파이 연결 모습"></p>
+<p><strong><code>라즈베리 파이 전원 용량이 부족할 수도 있으니 충분한 전력 용량을 가진 어댑터를 사용하시길 권장합니다.</code></strong></p>
+<h2 id="NodeMCU-Sensor"><a href="#NodeMCU-Sensor" class="headerlink" title="NodeMCU + Sensor"></a>NodeMCU + Sensor</h2><p><code>미니 Arduino</code> 라고 불리는 <code>NodeMCU</code>와 <code>Sensor</code> 연결 방법입니다.<br>라즈베리파이로 모두 구성해도 되지만 센서가 늘어날 경우 <code>Touch panel</code>이 가격대가 상당하기 때문에 가격적인 면이 효율성이 떨어집니다.<br>또한, <code>DashBoard</code> 를 만들 예정이기 때문에 사실상 <code>Panel</code>은 필요없고 센서에서 플랫폼으로 직접 데이터를 쏴주기만 하면 되기 때문에 <code>Device</code>에서 <code>Wifi</code> 가 되는 <code>NodeMCU</code>를 사용하게 되었습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/nodemcu_pins.png?raw=true" alt="node MCU의 PinMap"></p>
+<p>NodeMCU의 핀맵은 위와 같습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/oled.png?raw=true" alt="OLED연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht.png?raw=true" alt="DHT연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust.png?raw=true" alt="dust연결"></p>
+<p>위와 같이 <code>OLED</code> <code>DHT</code> <code>DUST</code> 연결해 주시면 됩니다.<br><code>Software</code> 코드는 다음 챕터에서 다루도록 하겠습니다.</p>
+<h3 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h3><blockquote>
+<p>Sensor 값을 RaspberryPi 로 가져오는 부분과 NodeMCU로 가져오도록 해야합니다.<br>              RaspberryPi는 직접적으로 화면에서 센서 데이터를 가져올 수 있도록 하고, NodeMCU는 플랫폼으로 직접<br>              전송할 수 있도록 합니다.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/environmental-sensor-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -882,7 +1088,7 @@ v8.11.3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -909,7 +1115,9 @@ v8.11.3
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
