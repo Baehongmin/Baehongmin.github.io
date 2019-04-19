@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/environmental-sensor-3/">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/project-euler-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hongmin Bae">
@@ -313,7 +313,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/19/environmental-sensor-3/" class="post-title-link" itemprop="url">environmental-sensor-3</a>
+                <a href="/2019/04/19/project-euler-1/" class="post-title-link" itemprop="url">project-euler-1</a>
               
             
           </h1>
@@ -338,9 +338,13 @@
                 
               
 
-              <time title="Created: 2019-04-19 10:22:37" itemprop="dateCreated datePublished" datetime="2019-04-19T10:22:37+09:00">2019-04-19</time>
+              <time title="Created: 2019-04-19 16:37:38 / Modified: 16:47:58" itemprop="dateCreated datePublished" datetime="2019-04-19T16:37:38+09:00">2019-04-19</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -357,8 +361,8 @@
                 </span>
             
                 <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/19/environmental-sensor-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/environmental-sensor-3/" itemprop="commentCount"></span>
+                <a href="/2019/04/19/project-euler-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/project-euler-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -366,7 +370,7 @@
 
           
           
-            <span id="/2019/04/19/environmental-sensor-3/" class="leancloud_visitors" data-flag-title="environmental-sensor-3">
+            <span id="/2019/04/19/project-euler-1/" class="leancloud_visitors" data-flag-title="project-euler-1">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -399,7 +403,259 @@
       
         
           
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/math.jpg?raw=true" alt="수학화면"></p>
+<p>  우연히 웹서핑하다가 프로젝트 오일러라는 문제를 봐서 틈틈히 풀어볼까 합니다.<br>  어려워요.. ㅜㅜ 나는 진짜 알고리즘 OO 이구나… 라는 생각을 많이 하게 됩니다.  </p>
+<h1 id="Project-Euler"><a href="#Project-Euler" class="headerlink" title="Project Euler"></a>Project Euler</h1><blockquote>
+<p> 여기 실린 문제들을 풀려면 수학적인 지식이나 프로그래밍 솜씨 한가지만으로는 충분하지 않습니다. 수학적인 지식이 있다면 좀 더<br>우아하고 효율적인 방법을 찾을 수 있겠지만, 대부분의 경우 문제를 해결하려면 컴퓨터에 대한 지식과 프로그래밍 기법을 동원해야<br>합니다.</p>
+<p>새로운 분야에 대한 탐구심을 키워가고, 재미있게 즐기는 중에 새로운 개념을 하나 둘 알아갈 수 있는 장을 마련하자는 것이 이<br>프로젝트를 시작해서 지금까지 이르게 된 동기라고 할 수 있겠습니다.</p>
+</blockquote>
+<p><a href="http://euler.synap.co.kr/" target="_blank" rel="noopener">프로젝트 오일러 사이트</a></p>
+<p>저는… JAVA로 풀어보려고합니다. C가 원래 더 편했는데 C 툴을 안깔아놨네요.. ㅜㅜ</p>
+<h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h2><p>첫 번째 문제는 생각보다 쉽긴하네요 그냥 for/if 문으로 풀어보았습니다.<br>다른방법으로 푸신 분들도 많긴하던데…. 신기합니다. 가장 심플하게 풀어보았습니다.</p>
+<pre><code>//1000보다 작은 자연수 중에서 3 또는 5의 배수를 모두 더하면?
+int result = 0;
+for(int i=0;i&lt;1000;i++) {
+    if(i%3 == 0||i%5 == 0) {
+        result = result + i;
+    }
+}
+System.out.println(result);
+</code></pre><h2 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h2><p>정말 피보나치 수열이 어렵… 난 수학이 너무어렵…. 무슨말인지도 모르겟지만 풀긴해봤습니다.</p>
+<pre><code>//피보나치 수열의 짝수이면서 4백만 이하인 모든항
+int pre = 1, sum = 0;
+for(int i = 1; i&lt;4000000;) {
+    int next = pre + i;
+    pre = i;
+    i = next;
+    System.out.println(next);
+    if(i%2==0){
+        sum += next;
+    }
+}
+System.out.println(sum);
+</code></pre><h2 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h2><pre><code>//소인수 중에서 가장 큰 수 구하기 에라토스테네스의 체 알고리즘
+// ArrayList로 구현
+ArrayList&lt;Boolean&gt; primeList;
+int n = 10000;
+// n+1만큼 할당
+primeList = new ArrayList&lt;Boolean&gt;(n+1);
+// 0번째와 1번째를 소수 아님으로 처리
+primeList.add(false);
+primeList.add(false);
+// 2~ n 까지 소수로 설정
+for(int i=2; i&lt;=n; i++ )
+    primeList.add(i, true);
+// 2 부터  ~ i*i &lt;= n
+// 각각의 배수들을 지워간다.
+for(int i=2; (i*i)&lt;=n; i++){
+    if(primeList.get(i)){
+        for(int j = i*i; j&lt;=n; j+=i) {
+            primeList.set(j, false);
+        }
+    }
+}
+long k = 600851475143L;
+StringBuffer sb = new StringBuffer();
+for(int i=0; i&lt;=n; i++){
+    if(primeList.get(i) == true){
+        if(k%i == 0) {
+            k = k/i;
+        }
+        if(k == 1) {
+            sb.append(i);
+            sb.append(&quot; end&quot;);
+            break;
+        }
+    }
+}
+System.out.println(sb.toString());
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/environmental-sensor-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/19/environmental-sensor-3/" class="post-title-link" itemprop="url">환경센서 구성해보기(3)</a>
+              
             
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 10:22:37 / Modified: 16:36:31" itemprop="dateCreated datePublished" datetime="2019-04-19T10:22:37+09:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/19/environmental-sensor-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/environmental-sensor-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/19/environmental-sensor-3/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(3)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>이번 장에서는 Raspberry Pi 소스와 Arduino 소스에 대해서 작성해 보도록 하겠습니다.</p>
+<h1 id="환경센서-구성해보기-3"><a href="#환경센서-구성해보기-3" class="headerlink" title="환경센서 구성해보기(3)"></a>환경센서 구성해보기(3)</h1><h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
+<li><p>라즈베리파이 SETTING</p>
+</li>
+<li><p>SENSOR CONNECTION</p>
+</li>
+<li><p><strong>SENSOR VALUE 가져오는 방법 및 코드</strong></p>
+</li>
+<li><p><strong>SENSOR VALUE를 화면으로 띄우는 방법</strong></p>
+</li>
+<li><p><strong>플랫폼으로 데이터 전송방법</strong></p>
+</li>
+<li><p>플랫폼 데이터를 스마트 미러에 띄우기</p>
+</li>
+</ol>
+<h2 id="NodeRed-Node-js-LDCC-IoTP"><a href="#NodeRed-Node-js-LDCC-IoTP" class="headerlink" title="NodeRed + Node.js + LDCC IoTP"></a>NodeRed + Node.js + LDCC IoTP</h2><p>S/W 소스를 다루는 장으로 Sensor Value 를 직접 RaspberryPi 에서 Node Red를 통하여 간단한 Dash board 를 만드는 방법을 설명하고자 합니다.<br>또한  IoT 플랫폼에 직접 데이터를 쌓아 나중에 통합 Dashboard 만들 때 쉽게 데이터를 사용 할 수 있도록 플랫폼에 데이터를 쌓는 부분도 작성하려 합니다.<br>IoT 플랫폼을 사용하고자 한다면 플랫폼 접근 권한이 필요합니다.</p>
+<blockquote>
+<p><strong>현재 IoT플랫폼이 Public 망에 구성이 되어 있지 않음으로 사용이 불가합니다. 2019-04-19</strong></p>
+</blockquote>
+
           
         
       
@@ -475,7 +731,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/04/18/newtech-deepracer/" class="post-title-link" itemprop="url">newtech-deepracer</a>
+                <a href="/2019/04/18/newtech-deepracer/" class="post-title-link" itemprop="url">딥레이서와 관련하여 복붙해보긔</a>
               
             
           </h1>
@@ -517,7 +773,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-19 14:44:30" itemprop="dateModified" datetime="2019-04-19T14:44:30+09:00">2019-04-19</time>
+                <time title="Modified: 2019-04-19 16:35:43" itemprop="dateModified" datetime="2019-04-19T16:35:43+09:00">2019-04-19</time>
               
             
           </span>
@@ -544,7 +800,7 @@
 
           
           
-            <span id="/2019/04/18/newtech-deepracer/" class="leancloud_visitors" data-flag-title="newtech-deepracer">
+            <span id="/2019/04/18/newtech-deepracer/" class="leancloud_visitors" data-flag-title="딥레이서와 관련하여 복붙해보긔">
               <span class="post-meta-divider">|</span>
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
@@ -940,7 +1196,7 @@ return float(reward)
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-19 14:44:35" itemprop="dateModified" datetime="2019-04-19T14:44:35+09:00">2019-04-19</time>
+                <time title="Modified: 2019-04-19 16:23:49" itemprop="dateModified" datetime="2019-04-19T16:23:49+09:00">2019-04-19</time>
               
             
           </span>
@@ -1040,8 +1296,7 @@ return float(reward)
 <h3 id="네이버-NBP-글로벌-플랫폼-개발랩"><a href="#네이버-NBP-글로벌-플랫폼-개발랩" class="headerlink" title="네이버 NBP 글로벌 플랫폼 개발랩"></a>네이버 NBP 글로벌 플랫폼 개발랩</h3><p>날짜별로 Index를 따로 설정해서 데이터를 저장<br>Log를 저장하는 ElasticSearch.<br><a href="https://d2.naver.com/helloworld/273788" target="_blank" rel="noopener">D2 블로그</a></p>
 <h3 id="KAKAO-개발자-노트"><a href="#KAKAO-개발자-노트" class="headerlink" title="KAKAO 개발자 노트"></a>KAKAO 개발자 노트</h3><p>날짜별로 Index를 따로 설정해서 데이터 저장 하는 방법 사용<br>데이터가 점점 쌓일수록 더 쉽게 Index를 설정할 수 있을 것 같긴합니다.</p>
 <h3 id="삼성-SDS"><a href="#삼성-SDS" class="headerlink" title="삼성 SDS"></a>삼성 SDS</h3><p>Chatbot System 에서 사용되는 ElasticSearch 일별 인덱스로 나눔</p>
-<p>### </p>
-<p>데이터가 많지 않은경우는 단일 Index를 사용하지만 데이터가 많을 경우 다중 Index를 사용한다.</p>
+<h3 id="어딘지-모를-개발자들"><a href="#어딘지-모를-개발자들" class="headerlink" title="어딘지 모를 개발자들"></a>어딘지 모를 개발자들</h3><p>데이터가 많지 않은경우는 단일 Index를 사용하지만 데이터가 많을 경우 다중 Index를 사용한다.</p>
 
           
         
@@ -1160,7 +1415,7 @@ return float(reward)
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-19 14:44:45" itemprop="dateModified" datetime="2019-04-19T14:44:45+09:00">2019-04-19</time>
+                <time title="Modified: 2019-04-19 16:26:03" itemprop="dateModified" datetime="2019-04-19T16:26:03+09:00">2019-04-19</time>
               
             
           </span>
@@ -1905,7 +2160,7 @@ v8.11.3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1944,7 +2199,17 @@ v8.11.3
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
