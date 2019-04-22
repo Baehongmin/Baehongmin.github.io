@@ -338,7 +338,7 @@
                 
               
 
-              <time title="Created: 2019-04-19 16:37:38 / Modified: 16:53:37" itemprop="dateCreated datePublished" datetime="2019-04-19T16:37:38+09:00">2019-04-19</time>
+              <time title="Created: 2019-04-19 16:37:38 / Modified: 17:31:36" itemprop="dateCreated datePublished" datetime="2019-04-19T16:37:38+09:00">2019-04-19</time>
             
 
             
@@ -588,12 +588,24 @@ System.out.println(sb.toString());
                 
               
 
-              <time title="Created: 2019-04-19 10:22:37 / Modified: 16:36:31" itemprop="dateCreated datePublished" datetime="2019-04-19T10:22:37+09:00">2019-04-19</time>
+              <time title="Created: 2019-04-19 10:22:37" itemprop="dateCreated datePublished" datetime="2019-04-19T10:22:37+09:00">2019-04-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-22 17:37:44" itemprop="dateModified" datetime="2019-04-22T17:37:44+09:00">2019-04-22</time>
               
             
           </span>
@@ -656,23 +668,84 @@ System.out.println(sb.toString());
             <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
 <p>이번 장에서는 Raspberry Pi 소스와 Arduino 소스에 대해서 작성해 보도록 하겠습니다.</p>
 <h1 id="환경센서-구성해보기-3"><a href="#환경센서-구성해보기-3" class="headerlink" title="환경센서 구성해보기(3)"></a>환경센서 구성해보기(3)</h1><h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
-<li><p>라즈베리파이 SETTING</p>
-</li>
-<li><p>SENSOR CONNECTION</p>
-</li>
-<li><p><strong>SENSOR VALUE 가져오는 방법 및 코드</strong></p>
-</li>
-<li><p><strong>SENSOR VALUE를 화면으로 띄우는 방법</strong></p>
-</li>
-<li><p><strong>플랫폼으로 데이터 전송방법</strong></p>
-</li>
-<li><p>플랫폼 데이터를 스마트 미러에 띄우기</p>
-</li>
+<li>라즈베리파이 SETTING</li>
 </ol>
-<h2 id="NodeRed-Node-js-LDCC-IoTP"><a href="#NodeRed-Node-js-LDCC-IoTP" class="headerlink" title="NodeRed + Node.js + LDCC IoTP"></a>NodeRed + Node.js + LDCC IoTP</h2><p>S/W 소스를 다루는 장으로 Sensor Value 를 직접 RaspberryPi 에서 Node Red를 통하여 간단한 Dash board 를 만드는 방법을 설명하고자 합니다.<br>또한  IoT 플랫폼에 직접 데이터를 쌓아 나중에 통합 Dashboard 만들 때 쉽게 데이터를 사용 할 수 있도록 플랫폼에 데이터를 쌓는 부분도 작성하려 합니다.<br>IoT 플랫폼을 사용하고자 한다면 플랫폼 접근 권한이 필요합니다.</p>
+<ol start="2">
+<li>SENSOR CONNECTION</li>
+</ol>
+<ol start="3">
+<li><strong>SENSOR VALUE 가져오는 방법 및 코드</strong></li>
+</ol>
+<ol start="4">
+<li><strong>SENSOR VALUE를 화면으로 띄우는 방법</strong></li>
+</ol>
+<ol start="5">
+<li><strong>플랫폼으로 데이터 전송방법</strong></li>
+</ol>
+<ol start="6">
+<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
+</ol>
+<h2 id="NodeRed-Node-js-LDCC-IoTP"><a href="#NodeRed-Node-js-LDCC-IoTP" class="headerlink" title="NodeRed + Node.js + LDCC IoTP"></a>NodeRed + Node.js + LDCC IoTP</h2><p>S/W 소스를 다루는 장으로 Sensor Value 를 직접 RaspberryPi 에서 Node Red를 통하여 간단한 Dash board 를 만드는 방법을 설명하고자 합니다.</p>
+<p>또한 IoT 플랫폼에 직접 데이터를 쌓아 나중에 통합 Dashboard 만들 때 쉽게 데이터를 사용 할 수 있도록 플랫폼에 데이터를 쌓는 부분도 작성하려 합니다.</p>
+<p>IoT 플랫폼을 사용하고자 한다면 플랫폼 접근 권한이 필요합니다.</p>
 <blockquote>
-<p><strong>현재 IoT플랫폼이 Public 망에 구성이 되어 있지 않음으로 사용이 불가합니다. 2019-04-19</strong></p>
+<p> <strong>현재 IoT플랫폼이 Public 망에 구성이 되어 있지 않음으로 사용이 불가합니다. 2019-04-19</strong></p>
 </blockquote>
+<p>RaspberryPi 에서 node red 를 사용하기 위해 Node red를 설치합니다.<br>15년도 이후 라즈비안OS 에서는 기본적으로 Node-red 가 설치 되어 있습니다.</p>
+<h3 id="Node-RED-업데이트"><a href="#Node-RED-업데이트" class="headerlink" title="Node-RED 업데이트"></a>Node-RED 업데이트</h3><p><strong>먼저 라즈베리파이의 update와 upgrade를 진행합시다.</strong><br>진행되는 중간에 나오는 [y/n]? 에 대해서는 y를 입력 후 엔터(Enter)를 눌러주세요</p>
+<blockquote>
+<p>sudo apt-get update<br>sudo apt-get upgrade</p>
+</blockquote>
+<p><strong>터미널(Terminal)에서 다음을 입력해 줍시다.</strong></p>
+<blockquote>
+<p>sudo update-nodejs-and-nodered</p>
+</blockquote>
+<h3 id="Node-RED의-실행"><a href="#Node-RED의-실행" class="headerlink" title="Node-RED의 실행"></a>Node-RED의 실행</h3><h4 id="Case1-그래픽-화면에서의-실행"><a href="#Case1-그래픽-화면에서의-실행" class="headerlink" title="Case1. 그래픽 화면에서의 실행"></a>Case1. 그래픽 화면에서의 실행</h4><p>라즈베리파이에 모니터를 연결시켜거나 GUI모드를 사용하신다면 프로그램에서 Node-RED를 찾아 실행시키면 됩니다.</p>
+<h4 id="Case2-텍스트-화면에서의-실행"><a href="#Case2-텍스트-화면에서의-실행" class="headerlink" title="Case2. 텍스트 화면에서의 실행"></a>Case2. 텍스트 화면에서의 실행</h4><p>CLI나 터미널을 이용해서 Node-RED를 실행시키려면 node-red 명령어를 사용해야합니다.(<a href="https://wikidocs.net/16817" target="_blank" rel="noopener">참고-01-2-A</a>)</p>
+<p>우리는 현재 Node-RED 처음임으로 다음을 터미널에 입력합니다.</p>
+<blockquote>
+<p>sudo systemctl enable nodered.service<br>node-red</p>
+</blockquote>
+<p>node-red를 입력하면 현재 Node-RED가 실행되고 있음을 확인할 수 있습니다. </p>
+<h3 id="Node-Red-UI-구성하기"><a href="#Node-Red-UI-구성하기" class="headerlink" title="Node-Red UI 구성하기"></a>Node-Red UI 구성하기</h3><p>Node Red 팔렛트 설치하기<br>오른쪽 메뉴에 들어가서 팔렛트 관리에 들어갑니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/setting.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<p>팔렛트에서 설치할 항목은 아래 이미지 들과 같습니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pallet.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pallet2.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<h4 id="Node-Red-Code"><a href="#Node-Red-Code" class="headerlink" title="Node-Red Code"></a>Node-Red Code</h4><p>Dust Sensor Serial 포트에서 읽어 오는 방법입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust-Serial.PNG?raw=true" alt="dust(Serial)"></p>
+<pre><code>msg.topic = &apos;PMS5003&apos;;
+
+let sensorData = msg.payload;
+
+if(sensorData[0] != 0x42 || sensorData[1] != 0x4d)
+    msg.payload = &apos;startdata error&apos;;
+else
+    msg.sensorData = sensorData;
+
+return msg;
+</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
+<pre><code>if(msg.checksum) {
+    let sensorData = msg.sensorData;
+    msg.pm01std = parseInt(sensorData[4],10)*16*16 + parseInt(sensorData[5],10);
+    msg.pm25std = parseInt(sensorData[6],10)*16*16 + parseInt(sensorData[7],10);
+    msg.pm10std = parseInt(sensorData[8],10)*16*16 + parseInt(sensorData[9],10);
+    msg.pm01atm = parseInt(sensorData[10],10)*16*16 + parseInt(sensorData[11],10);
+    msg.pm25atm = parseInt(sensorData[12],10)*16*16 + parseInt(sensorData[13],10);
+    msg.pm10atm = parseInt(sensorData[14],10)*16*16 + parseInt(sensorData[15],10);
+    msg.p03um01L = parseInt(sensorData[16],10)*16*16 + parseInt(sensorData[17],10);
+    msg.p05um01L = parseInt(sensorData[18],10)*16*16 + parseInt(sensorData[19],10);
+    msg.p10um01L = parseInt(sensorData[20],10)*16*16 + parseInt(sensorData[21],10);
+    msg.p25um01L = parseInt(sensorData[22],10)*16*16 + parseInt(sensorData[23],10);
+    msg.p50um01L = parseInt(sensorData[24],10)*16*16 + parseInt(sensorData[25],10);
+    msg.p100um01L = parseInt(sensorData[26],10)*16*16 + parseInt(sensorData[27],10);
+    msg.isParsed = true;
+} else msg.isParsed = false;
+return msg;
+</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 파서를 사용하여 활용 데이터를 뽑아냅니다.<br><a href="http://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf" target="_blank" rel="noopener">PMS5003 DataSheet
+</a></p>
+<p>DUST Sensor의 플로우 구조입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust-nodered.PNG?raw=true" alt="DUST FLOW"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht-nodered.PNG?raw=true" alt="DHT FLOW"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dashboard-nodered.PNG?raw=true" alt="DashBoard FLOW"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/iotP-nodered.PNG?raw=true" alt="iotP FLOW"></p>
 
           
         
