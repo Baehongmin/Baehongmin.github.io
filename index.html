@@ -293,6 +293,221 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/24/project-euler-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/24/project-euler-2/" class="post-title-link" itemprop="url">project-euler-2</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-24 17:00:14 / Modified: 17:07:58" itemprop="dateCreated datePublished" datetime="2019-04-24T17:00:14+09:00">2019-04-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/project-euler/" itemprop="url" rel="index"><span itemprop="name">project-euler</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/24/project-euler-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/24/project-euler-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/24/project-euler-2/" class="leancloud_visitors" data-flag-title="project-euler-2">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/math.jpg?raw=true" alt="수학화면"></p>
+<h1 id="Project-Euler"><a href="#Project-Euler" class="headerlink" title="Project Euler"></a>Project Euler</h1><p>어렵네요</p>
+<h2 id="문제-5"><a href="#문제-5" class="headerlink" title="문제 5"></a>문제 5</h2><p>1 ~ 10 사이의 어떤 수로도 나누어 떨어지는 가장 작은 수는 2520입니다.</p>
+<p>그러면 1 ~ 20 사이의 어떤 수로도 나누어 떨어지는 가장 작은 수는 얼마입니까?</p>
+<h2 id="풀이"><a href="#풀이" class="headerlink" title="풀이"></a>풀이</h2><pre><code>    {
+    long gong = 1;
+    long u = 0;
+    long result = 0;
+    for(int k = 2;k&lt;20;k++) {    
+        u = uclid(gong, k);
+        gong = gong/u * k /u * u;
+        result = gong;
+    }
+    System.out.println(result);
+    }
+public long uclid(long a, long b) {
+    long temp = 0;
+    while(a!=0) {
+        if(a&lt;b) {
+            temp = a;
+            a = b;
+            b = temp;
+        }
+        a= a%b;
+    }
+    return b;
+}
+</code></pre><p>이 문제는 공약수들의 곱을 이야기 합니다…<br>여러수의 공약수를 구하기는 쉽지 않다보니 유클리드 호제법이라는 알고리즘으로 두 개의 숫자의 공약수를 구하는 방식으로 코딩해 보았습니다.</p>
+<p>유클리드 호제법을 이용하여 제수를 계속 두 수의 나머지를 이용하여 나누는 방식으로<br>최대 공배수를 구하는 방법으로 공약수의 곱을 구하는 방법을 택했습니다.</p>
+<p>수학도 못하고 코딩도 못하다 보니… 꽤 시간이 걸렸습니다.</p>
+<h3 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h3><p>후기 글에 보니 누가 200까지 구했다고 올려놨었는데… 자바로 하니 메모리 한계가 오더라고요 어떻게 해야 200까지 구할 수 있을지 고민해 봐야 할 꺼 같습니다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/project-euler-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2317,7 +2532,7 @@ v8.11.3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
