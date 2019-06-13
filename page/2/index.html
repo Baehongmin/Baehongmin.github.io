@@ -293,6 +293,427 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/environmental-sensor-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/15/environmental-sensor-1/" class="post-title-link" itemprop="url">환경센서 구성해보기(1)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-15 17:14:46" itemprop="dateCreated datePublished" datetime="2019-04-15T17:14:46+09:00">2019-04-15</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-23 14:20:17" itemprop="dateModified" datetime="2019-04-23T14:20:17+09:00">2019-04-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/environmentalsensor/" itemprop="url" rel="index"><span itemprop="name">environmentalsensor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/15/environmental-sensor-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/environmental-sensor-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/15/environmental-sensor-1/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(1)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>회사 사무실 안에서 미세먼지를 측정하여 공공 데이터 측정치와 사무실 안의 데이터를 비교하고 얼마나 사무실 공기가 좋지 않은지 측정할겸 데이터 정리 할겸 써봅니다.</p>
+<h1 id="환경센서-구성해보기"><a href="#환경센서-구성해보기" class="headerlink" title="환경센서 구성해보기"></a>환경센서 구성해보기</h1><p><strong>준비물</strong></p>
+<ul>
+<li>라즈베리파이</li>
+<li>PMS5003 (먼지센서)</li>
+<li>DHT11 (온습도센서)</li>
+<li>라즈베리파이 7인치 터치스크린</li>
+<li>nodeMCU</li>
+</ul>
+<p><strong>기술요구사항</strong></p>
+<ul>
+<li>PMS5003 DATA SHEET</li>
+<li>PYTHON or JAVA (센서 값을 받아오기위함)</li>
+<li>라즈베리파이 화면에 띄울 기술 (Node or Web)</li>
+<li>IoT Platform 으로 데이터를 띄울 기술 (MQTT, JSON)</li>
+<li>Nodejs를 사용해서 스마트 미러에 데이터를 취합 기술 (HTTP CONNECTION, AJAX)</li>
+</ul>
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><p><strong>1.  라즈베리파이 SETTING</strong></p>
+<ol start="2">
+<li>SENSOR CONNECTION</li>
+<li>SENSOR VALUE 가져오는 방법 및 코드</li>
+<li>SENSOR VALUE를 화면으로 띄우는 방법</li>
+<li>플랫폼으로 데이터 전송방법</li>
+<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
+</ol>
+<h2 id="라즈베리파이-SETTING"><a href="#라즈베리파이-SETTING" class="headerlink" title="라즈베리파이 SETTING"></a>라즈베리파이 SETTING</h2><p>소프트 웨어는 <strong>Raspbian Stretch</strong> 를 사용하였습니다. 하드웨어는 라즈베리파이 3B 버전을 사용하였습니다.<br>라즈비안 Stretch 버전은 <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">라즈베리파이 홈페이지</a>에 가셔서 다운로드 받으시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/rasbianStrechDownload.jpg?raw=true" alt="라즈비안 다운로드 페이지"><br>위에서 받은 라즈비안 이미지를 SD카드에 업로드 시켜야 합니다.<br>업로드 할때 사용한 프로그램은 <strong>Etcher</strong> 라는 프로그램입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/balenaEtcher.png?raw=true" alt="라즈비안 다운로드 페이지"><br>SD카드는 라즈비안 이미지 크기보다 큰 용량을 가지고 있어야 합니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/desktop.png?raw=true" alt="데스크탑 페이지"><br>정상적으로 이미지를 SD카드에 옮기고 라즈베리를 켜게 되면 위와 같은 바탕화면이 나오게 됩니다. </p>
+<h3 id="라즈베리-파이-3-시리얼-블루투스-문제"><a href="#라즈베리-파이-3-시리얼-블루투스-문제" class="headerlink" title="라즈베리 파이 3 시리얼/블루투스 문제"></a>라즈베리 파이 3 시리얼/블루투스 문제</h3><blockquote>
+<p>라즈베리 파이 3로 오면서 무선랜/블루투스 기능 추가를 위해 Broadcom의 BCM43438 칩을 사용하고 있는데 무선랜<br>기능은 SDIO로 연결하지만 블루투스 기능은 UART0으로 연결을 하고 시리얼 포트 핀은 UART1에 연결되도록 구조가<br>변경되었다. 그러므로 그 동안 아무 문제 없이 시리얼 포트를 사용하던 프로그램이 라즈베리 파이 3로 오면서 블루투스를 사용하게<br>되면 제대로 동작을 할 수 없게 되어 버린 것이다.</p>
+</blockquote>
+<p>위와 같은 상황이 벌어져 Setting을 약간 해야 된다고 합니다.<br><a href="https://arsviator.blogspot.com/2016/08/3-raspberry-pi-3-uartbluetooth-problem.html" target="_blank" rel="noopener">라즈베리 파이 3 시리얼/블루투스 문제</a><br>자세한 내용은 위의 블로그를 참조하면 좋습니다.</p>
+<pre><code>‘/boot/config.txt’에 ‘dtoverlay=pi3-disable-bt’
+</code></pre><p>를 추가</p>
+<p>UART1을 사용하지 않는걸로 해서 블루투스를 비활성화 시킨다.</p>
+<pre><code>&quot;sudo systemctl disable hciuart&quot;&quot;sudosystemctldisablehciuart&quot;
+</code></pre><p>명령을 추가로 실행합니다.</p>
+<h3 id="RaspberryPi-Wifi-Setting"><a href="#RaspberryPi-Wifi-Setting" class="headerlink" title="RaspberryPi Wifi Setting"></a>RaspberryPi Wifi Setting</h3><pre><code>Sudo iwlist wlan0 scan
+</code></pre><p>랜카드가 인식한 와이파이 리스트가 리스트업 됩니다. 검색된 무선 공유기의 ESSID를 확인한 후 연결할 와이파이를 확실하게 적어놔야 합니다.</p>
+<pre><code>sudo nano /etc/network/interfaces
+</code></pre><p> <img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/wifisetting.png?raw=true" alt="와이파이 세팅 페이지"></p>
+<p><strong>SSID와 비밀번호</strong>를 확실하게 입력해줘야 합니다. 그렇지 않으면 연결이 되지 않기 때문입니다.<br>또한 inet 옆에 DHCP를 입력하면 Address나 netmask, gateway를 따로 입력하지 않아도 됩니다.<br>static을 입력했다면 망에서 <strong>IP충돌이 나지 않는 번호를 입력</strong>하여 직접 할당을 해줘야한다. 유선이 아니더라도 무선에서도 가능하다.</p>
+<p>여기서 wpa-ssid 옆에 문자열로 방금 전 검색한 ESSID를 입력하고 wap-psk 옵션에는 비밀번호를 입력한다.</p>
+<p>You can rename the current file by clicking the file name in the navigation bar or by clicking the <strong>Rename</strong> button in the file explorer.</p>
+<h3 id="노드-JS-설치"><a href="#노드-JS-설치" class="headerlink" title="노드 JS 설치"></a>노드 JS 설치</h3><p>인터넷 연결이 잘 되었다면 Node.js 를 설치 합니다.<br>라즈베리파이 콘솔에서 다운로드 명령어를 입력합니다.</p>
+<blockquote>
+<p>pi@raspberrypi:~ $ wget<br><a href="https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz" target="_blank" rel="noopener">https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz</a></p>
+</blockquote>
+<p> 위의 다운로드한 파일을 아래와 같은 명령어를 통해 압축을 풉니다.</p>
+<pre><code>pi@raspberrypi:~ $ tar -xvf node-v8.11.3-linux-armv7l.tar.xz
+</code></pre><p>압축을 풀면 같은 이름의 디렉토리가 생성됩니다. 원하는 곳으로 옮기고자 한다면 아래의 명령어를 치면 됩니다.</p>
+<pre><code>pi@raspberrypi:~ $ sudo mv node-v8.11.3-linux-armv7l /{원하는 폴더}
+</code></pre><p>기존에 설치되어 있던 nodejs를 삭제합니다.</p>
+<pre><code>pi@raspberrypi:~ $ sudo apt remove nodejs
+</code></pre><p>정상적으로 동작하는지 확인합니다.</p>
+<pre><code>pi@raspberrypi:~ $ node --version
+
+v8.11.3
+</code></pre><h3 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h3><p>다음 페이지 에서는 라즈베리 파이와 Sensor를 연결하는 것과<br>NodeMCU 와 Sensor를 연결하는 방법에 대해서 다루도록 하겠습니다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/first-post/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/15/first-post/" class="post-title-link" itemprop="url">first-post</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-15 11:46:09 / Modified: 11:47:35" itemprop="dateCreated datePublished" datetime="2019-04-15T11:46:09+09:00">2019-04-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/15/first-post/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/first-post/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/15/first-post/" class="leancloud_visitors" data-flag-title="first-post">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="제목"><a href="#제목" class="headerlink" title="제목"></a>제목</h2><p>나의 첫번째 포스트입니다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -495,7 +916,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -565,7 +986,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
