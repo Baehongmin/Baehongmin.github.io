@@ -293,6 +293,461 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/16/input-elastic-search/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/16/input-elastic-search/" class="post-title-link" itemprop="url">input elastic search</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-16 17:31:41" itemprop="dateCreated datePublished" datetime="2019-04-16T17:31:41+09:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-19 16:23:49" itemprop="dateModified" datetime="2019-04-19T16:23:49+09:00">2019-04-19</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/16/input-elastic-search/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/input-elastic-search/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/16/input-elastic-search/" class="leancloud_visitors" data-flag-title="input elastic search">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Elastic-Search-시스템-환경-구조"><a href="#Elastic-Search-시스템-환경-구조" class="headerlink" title="Elastic Search 시스템 환경 구조"></a>Elastic Search 시스템 환경 구조</h2><p>elasticsearch는 Lucene을 베이스로 개발한 분산 검색엔진 이다. 설치와 서버 확장이 편리하다. 분산 시스템이기 때문에 검색 DataSet 용량이 증가했을 때 처리 할 수 있는 방안이 유연하다.</p>
+<p><strong>실제 서비스에 적용할 때 고려해야 할 사항 정리</strong><br>Index(Database) Type(Table) Document(Row)</p>
+<ul>
+<li>어느 범위를 Index에 저장할 것인가?</li>
+<li>Type 의 범위?</li>
+</ul>
+<p>기본적으로 ElasticSearch는 Index를 엮거나 Type 들을 엮어서 검색 가능함</p>
+<h2 id="Index-Type-분류-방법-2가지"><a href="#Index-Type-분류-방법-2가지" class="headerlink" title="Index, Type 분류 방법 2가지"></a>Index, Type 분류 방법 2가지</h2><h3 id="Multiple-Index-Single-Type"><a href="#Multiple-Index-Single-Type" class="headerlink" title="Multiple Index Single Type"></a>Multiple Index Single Type</h3><ul>
+<li>인덱스 내에서 검색하는 것이 효율적이고 빠르다. 각 인덱스가 다른 인덱스에 분산되어 있기 때문에 각 샤드에서 데이터 크기가 작아야한다.</li>
+<li>Multiple Index 데이터 조합 검색은 오버헤드 존재 한다.<br>–   인덱스를 통해 더 많은 샤드에 쿼리를 보내 컴파일하고 사용자에게 다시 보내야 하기 때문이다.</li>
+<li>데이터의 양이 적다면 사용하지 않아야한다.<br>–   양이 적은데 그것을 위해서 추가적인 샤드, 더 많은 스토리지가 필요하기 때문이다.</li>
+<li>만약 데이터셋이 크고 쿼리한번 하는데 오래 걸린다면 추천<br>–   독점 샤드숫자가 많기 때문에 특정 데이터들을 저장할 수 있다. 때문에 ES가 쿼리를 처리할 때 편해진다.</li>
+</ul>
+<h3 id="Single-Index-Multiple-Type"><a href="#Single-Index-Multiple-Type" class="headerlink" title="Single Index Multiple Type"></a>Single Index Multiple Type</h3><ul>
+<li>1개의 인덱스 안에 있는 5개의 샤드(디폴트)에 더 많은 데이터가 저장된다.<br>–   이것은 다른 type 을 조합하는 쿼리를 날릴때 오버헤드가 적다는 것을 의미한다.<br>–   하지만 샤드 크기가 상당히 커질 거다.</li>
+<li>샤드가 커지면 필터를 많이 사용해야 하기 때문에 검색 시간이 길어 질 수 있다.</li>
+<li>만약 데이터 용량이 1TB 이상이 된다면 사용하면 안된다.</li>
+<li>다른 인덱스 또는 여러 샤드에 데이터를 분산하지 않는다면 사용 시 비효율을 가져온다.</li>
+<li>저장하는 데이터가 작다면 이 방법을 사용한다. 추가적인 샤드나 스토리지가 필요하지 않기 때문이다.</li>
+</ul>
+<h2 id="적용할-방식"><a href="#적용할-방식" class="headerlink" title="적용할 방식"></a>적용할 방식</h2><p>다음과 같은 이유로 <code>Single Index Multiple Type</code> 방식으로 사용한다.</p>
+<ol>
+<li>여러 인덱스를 사용하기에는 데이터 양이 많지 않다.</li>
+<li>5분에 한번 들어오는 데이터를 많은 양의 <code>Dataset</code>으로 나누지 않고 그대로 사용할 것이기 때문이다.</li>
+<li><code>type</code>을 <code>Device</code>로 나누는게 좋을 것 같다.</li>
+</ol>
+<blockquote>
+<p><code>Device</code> 별로 <code>Aggregation</code>을 구하는 일이 더 많을 것이기 때문에</p>
+<ol start="4">
+<li>3번과 같은 방법으로 Dataset을 구성한다면 굳이 Label을 사용할 필요가 없어 진다.</li>
+<li>매장당 Device가 1개라고 가정하면 Type 안에 Label을 사용하지 않아도 Type만으로도 충분히 구분 가능 하다.</li>
+</ol>
+</blockquote>
+<h2 id="타-기업-Elastic-활용-사례"><a href="#타-기업-Elastic-활용-사례" class="headerlink" title="타 기업 Elastic 활용 사례"></a>타 기업 Elastic 활용 사례</h2><p>타 기업에서 <code>Elastic Data</code>를 어떠한 방법으로 저장하는지에 대해서 알아 보고자 합니다.<br>물론 많은 데이터가 존재하지 않습니다. –&gt; 실제 <code>Project</code>와 관련되어있음</p>
+<h3 id="RIDI-BOOKS"><a href="#RIDI-BOOKS" class="headerlink" title="RIDI BOOKS"></a>RIDI BOOKS</h3><p>Elasticsearch에서 색인에 별명을 붙여줄 수 있는데 이를 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html" target="_blank" rel="noopener">색인 별명(Index Aliases)</a>이라고 합니다.</p>
+<p><a href="http://www.ridicorp.com/blog/2018/11/20/index-aliases/" target="_blank" rel="noopener">리디북스 블로그</a></p>
+<p>위의 블로그 참조하면됩니다. 색인별명을 통해서 데이터를 손쉽게 찾을 수 있게 됩니다. 같은 색인 별명을 지정하면 찾을 때 손쉽게 찾을 수 있습니다.</p>
+<h3 id="네이버-NBP-글로벌-플랫폼-개발랩"><a href="#네이버-NBP-글로벌-플랫폼-개발랩" class="headerlink" title="네이버 NBP 글로벌 플랫폼 개발랩"></a>네이버 NBP 글로벌 플랫폼 개발랩</h3><p>날짜별로 Index를 따로 설정해서 데이터를 저장<br>Log를 저장하는 ElasticSearch.<br><a href="https://d2.naver.com/helloworld/273788" target="_blank" rel="noopener">D2 블로그</a></p>
+<h3 id="KAKAO-개발자-노트"><a href="#KAKAO-개발자-노트" class="headerlink" title="KAKAO 개발자 노트"></a>KAKAO 개발자 노트</h3><p>날짜별로 Index를 따로 설정해서 데이터 저장 하는 방법 사용<br>데이터가 점점 쌓일수록 더 쉽게 Index를 설정할 수 있을 것 같긴합니다.</p>
+<h3 id="삼성-SDS"><a href="#삼성-SDS" class="headerlink" title="삼성 SDS"></a>삼성 SDS</h3><p>Chatbot System 에서 사용되는 ElasticSearch 일별 인덱스로 나눔</p>
+<h3 id="어딘지-모를-개발자들"><a href="#어딘지-모를-개발자들" class="headerlink" title="어딘지 모를 개발자들"></a>어딘지 모를 개발자들</h3><p>데이터가 많지 않은경우는 단일 Index를 사용하지만 데이터가 많을 경우 다중 Index를 사용한다.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/16/environmental-sensor-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/16/environmental-sensor-2/" class="post-title-link" itemprop="url">환경센서 구성해보기(2)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-16 11:38:23" itemprop="dateCreated datePublished" datetime="2019-04-16T11:38:23+09:00">2019-04-16</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-23 14:20:21" itemprop="dateModified" datetime="2019-04-23T14:20:21+09:00">2019-04-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/environmentalsensor/" itemprop="url" rel="index"><span itemprop="name">environmentalsensor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/16/environmental-sensor-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/environmental-sensor-2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/16/environmental-sensor-2/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(2)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>이번 장에서는 센서들과 <code>RaspberryPi</code> 연결 <code>Arduino</code> 연결에 대해서 작성 하도록 하겠습니다.</p>
+<h1 id="환경센서-구성해보기-2"><a href="#환경센서-구성해보기-2" class="headerlink" title="환경센서 구성해보기(2)"></a>환경센서 구성해보기(2)</h1><p><strong>준비물</strong></p>
+<ul>
+<li>라즈베리파이</li>
+<li>PMS5003 (먼지센서)</li>
+<li>DHT11 (온습도센서)</li>
+<li>라즈베리파이 7인치 터치스크린</li>
+<li>nodeMCU</li>
+<li>1.44 tft 패널</li>
+</ul>
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
+<li>라즈베리파이 SETTING</li>
+<li><strong>SENSOR CONNECTION</strong></li>
+<li>SENSOR VALUE 가져오는 방법 및 코드</li>
+<li>SENSOR VALUE를 화면으로 띄우는 방법</li>
+<li>플랫폼으로 데이터 전송방법</li>
+<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
+</ol>
+<h2 id="라즈베리파이-미세먼지-amp-온습도센서"><a href="#라즈베리파이-미세먼지-amp-온습도센서" class="headerlink" title="라즈베리파이 + 미세먼지 &amp; 온습도센서"></a>라즈베리파이 + 미세먼지 &amp; 온습도센서</h2><p><code>라즈베리파이 3b</code> 의 핀 맵은 아래와 같습니다. 라즈베리파이 다른 버전을 사용하게된다면 아래 핀맵과 비교하여 같은 Pin 에다가 연결 하시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypi3bPinmap.png?raw=true" alt="라즈베리 파이 핀맵"></p>
+<p>아래 이미지는 <code>PM5003</code>의 <code>PinMap</code> 입니다.<br>사용하는 핀은 1,2,4,5 번 핀을 사용할 예정입니다. 나머지 핀은 사용하지 않기 때문에 선을 연결 할 경우 모든 선을 연결 하지 말고 4개의 선만 연결하여 사용 할 수 있도록 개량이 필요합니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pms5003_pinout.png?raw=true" alt="라즈비안 다운로드 페이지"></p>
+<p><code>DHT11</code> 은 따로 핀맵을 작성하지 않겠습니다. 제가 가지고 있는 <code>DHT11</code>의 경우 센서에 <code>GND, VCC, DATA</code> 핀이 어디인지 표시되어 있고, 또한 <code>DHT11</code> 센서의 경우 매우 많은 제조사가 있기 때문에 자신이 사용하는 제조사의 Pin Map을 참고 하시기 바랍니다. 대부분 3개에서 4개의 핀이 존재하는데 저는 위의 3개의 핀만 사용합니다.</p>
+<h3 id="라즈베리-파이와-센서-연결"><a href="#라즈베리-파이와-센서-연결" class="headerlink" title="라즈베리 파이와 센서 연결"></a>라즈베리 파이와 센서 연결</h3><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrysensor.PNG?raw=true" alt="라즈베리 센서 연결"></p>
+<p>라즈베리 파이와 센서 연결은 위의 보이는 핀에다가 연결해 주시면 됩니다.<br><code>PMS5003</code> 센서의 1,2 번 PIN은 <code>VCC</code>, <code>GND</code>이기 때문에 라즈베리 파이의 <code>VCC</code>, <code>GND</code> 원하시는 곳에 연결 해 주시면 됩니다.<br><code>DHT11</code> 센서의 <code>VCC</code>, <code>GND</code> 도 마찬가지로 원하는 곳에 연결해 주면 됩니다.<br>라즈베리 파이의 <code>VCC</code>, <code>GND</code> 어디에 연결해도 상관 없습니다.</p>
+<blockquote>
+<p>라즈베리 파이 7인치 연결하는 방법<br><a href="https://youtu.be/hqdz66Y-H7M" target="_blank" rel="noopener">Youtube</a> 링크 입니다.</p>
+</blockquote>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/realback.jpg?raw=true" alt="실제 라즈베리파이 연결 모습"></p>
+<p><strong><code>라즈베리 파이 전원 용량이 부족할 수도 있으니 충분한 전력 용량을 가진 어댑터를 사용하시길 권장합니다.</code></strong></p>
+<h2 id="NodeMCU-Sensor"><a href="#NodeMCU-Sensor" class="headerlink" title="NodeMCU + Sensor"></a>NodeMCU + Sensor</h2><p><code>미니 Arduino</code> 라고 불리는 <code>NodeMCU</code>와 <code>Sensor</code> 연결 방법입니다.<br>라즈베리파이로 모두 구성해도 되지만 센서가 늘어날 경우 <code>Touch panel</code>이 가격대가 상당하기 때문에 가격적인 면이 효율성이 떨어집니다.<br>또한, <code>DashBoard</code> 를 만들 예정이기 때문에 사실상 <code>Panel</code>은 필요없고 센서에서 플랫폼으로 직접 데이터를 쏴주기만 하면 되기 때문에 <code>Device</code>에서 <code>Wifi</code> 가 되는 <code>NodeMCU</code>를 사용하게 되었습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/nodemcu_pins.png?raw=true" alt="node MCU의 PinMap"></p>
+<p>NodeMCU의 핀맵은 위와 같습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/oled.PNG?raw=true" alt="OLED연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht.PNG?raw=true" alt="DHT연결"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust.PNG?raw=true" alt="dust연결"></p>
+<p>위와 같이 <code>OLED</code> <code>DHT</code> <code>DUST</code> 연결해 주시면 됩니다.<br><code>Software</code> 코드는 다음 챕터에서 다루도록 하겠습니다.</p>
+<h2 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h2><blockquote>
+<p>Sensor 값을 RaspberryPi 로 가져오는 부분과 NodeMCU로 가져오도록 해야합니다.<br>              RaspberryPi는 직접적으로 화면에서 센서 데이터를 가져올 수 있도록 하고, NodeMCU는 플랫폼으로 직접<br>              전송할 수 있도록 합니다.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/environmental-sensor-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -916,7 +1371,7 @@ v8.11.3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
