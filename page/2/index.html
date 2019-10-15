@@ -293,6 +293,318 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/environmental-sensor-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/19/environmental-sensor-3/" class="post-title-link" itemprop="url">환경센서 구성해보기(3)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 10:22:37" itemprop="dateCreated datePublished" datetime="2019-04-19T10:22:37+09:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-25 11:28:25" itemprop="dateModified" datetime="2019-07-25T11:28:25+09:00">2019-07-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/environmentalsensor/" itemprop="url" rel="index"><span itemprop="name">environmentalsensor</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/19/environmental-sensor-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/environmental-sensor-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/19/environmental-sensor-3/" class="leancloud_visitors" data-flag-title="환경센서 구성해보기(3)">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/raspberrypinode.png?raw=true" alt="라즈베리파이 노드JS 합치기"></p>
+<p>이번 장에서는 Raspberry Pi 소스와 Arduino 소스에 대해서 작성해 보도록 하겠습니다.</p>
+<h1 id="환경센서-구성해보기-3"><a href="#환경센서-구성해보기-3" class="headerlink" title="환경센서 구성해보기(3)"></a>환경센서 구성해보기(3)</h1><h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ol>
+<li>라즈베리파이 SETTING</li>
+</ol>
+<p>2) SENSOR CONNECTION</p>
+<ol start="3">
+<li><strong>SENSOR VALUE 가져오는 방법 및 코드</strong></li>
+</ol>
+<p>4)  <strong>SENSOR VALUE를 화면으로 띄우는 방법</strong></p>
+<ol start="5">
+<li><strong>플랫폼으로 데이터 전송방법</strong></li>
+</ol>
+<p>6) 플랫폼 데이터를 스마트 미러에 띄우기</p>
+<h2 id="NodeRed-Node-js-LDCC-IoTP"><a href="#NodeRed-Node-js-LDCC-IoTP" class="headerlink" title="NodeRed + Node.js + LDCC IoTP"></a>NodeRed + Node.js + LDCC IoTP</h2><p>S/W 소스를 다루는 장으로 Sensor Value 를 직접 RaspberryPi 에서 Node Red를 통하여 간단한 Dash board 를 만드는 방법을 설명하고자 합니다.</p>
+<blockquote>
+<p>Node-RED는 NodeJS와 자바스크립트 기반으로 실행되며, 몇 번의 클릭으로 강력한 프로그래밍을 하게 도와줍니다. 단지<br>몇 개의 노드를 서로 이어주기만 하면 됩니다. Node-RED를 배우고 여러 하드웨어 장치, API 와 온라인 서비스를<br>쉽게 만들어봅시다. 웹 서비스 뿐 아니라 라즈베리파이와 아두이노를 프로그래밍을 할 때 큰 힘을 발휘합니다.</p>
+</blockquote>
+<p>또한 IoT 플랫폼에 직접 데이터를 쌓아 나중에 통합 Dashboard 만들 때 쉽게 데이터를 사용 할 수 있도록 플랫폼에 데이터를 쌓는 부분도 작성하려 합니다.</p>
+<p>IoT 플랫폼을 사용하고자 한다면 플랫폼 접근 권한이 필요합니다.</p>
+<blockquote>
+<p><strong>현재 IoT플랫폼이 Public 망에 구성이 되어 있지 않음으로 사용이 불가합니다. 2019-04-19</strong></p>
+</blockquote>
+<p>RaspberryPi 에서 node red 를 사용하기 위해 Node red를 설치합니다.</p>
+<p>15년도 이후 라즈비안OS 에서는 기본적으로 Node-red 가 설치 되어 있습니다.</p>
+<h3 id="Node-RED-업데이트"><a href="#Node-RED-업데이트" class="headerlink" title="Node-RED 업데이트"></a>Node-RED 업데이트</h3><p><strong>먼저 라즈베리파이의 update와 upgrade를 진행합시다.</strong></p>
+<p>진행되는 중간에 나오는 [y/n]? 에 대해서는 y를 입력 후 엔터(Enter)를 눌러주세요</p>
+<blockquote>
+<p>sudo apt-get update</p>
+</blockquote>
+<blockquote>
+<p>sudo apt-get upgrade</p>
+</blockquote>
+<p><strong>터미널(Terminal)에서 다음을 입력해 줍시다.</strong></p>
+<blockquote>
+<p>sudo update-nodejs-and-nodered</p>
+</blockquote>
+<h3 id="Node-RED의-실행"><a href="#Node-RED의-실행" class="headerlink" title="Node-RED의 실행"></a>Node-RED의 실행</h3><h4 id="Case1-그래픽-화면에서의-실행"><a href="#Case1-그래픽-화면에서의-실행" class="headerlink" title="Case1. 그래픽 화면에서의 실행"></a>Case1. 그래픽 화면에서의 실행</h4><p>라즈베리파이에 모니터를 연결시켜거나 GUI모드를 사용하신다면 프로그램에서 Node-RED를 찾아 실행시키면 됩니다.</p>
+<h4 id="Case2-텍스트-화면에서의-실행"><a href="#Case2-텍스트-화면에서의-실행" class="headerlink" title="Case2. 텍스트 화면에서의 실행"></a>Case2. 텍스트 화면에서의 실행</h4><p>CLI나 터미널을 이용해서 Node-RED를 실행시키려면 node-red 명령어를 사용해야합니다.(<a href="https://wikidocs.net/16817" target="_blank" rel="noopener">참고-01-2-A</a>)</p>
+<p>우리는 현재 Node-RED 처음임으로 다음을 터미널에 입력합니다.</p>
+<blockquote>
+<p>sudo systemctl enable nodered.service</p>
+</blockquote>
+<blockquote>
+<p>node-red</p>
+</blockquote>
+<p>node-red를 입력하면 현재 Node-RED가 실행되고 있음을 확인할 수 있습니다.</p>
+<h3 id="Node-Red-UI-구성하기"><a href="#Node-Red-UI-구성하기" class="headerlink" title="Node-Red UI 구성하기"></a>Node-Red UI 구성하기</h3><p>Node Red 팔렛트 설치하기</p>
+<p>오른쪽 메뉴에 들어가서 팔렛트 관리에 들어갑니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/setting.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<p>팔렛트에서 설치할 항목은 아래 이미지 들과 같습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pallet.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/pallet2.PNG?raw=true" alt="NodeRed 팔렛트 Setting"></p>
+<h4 id="Node-Red-Code"><a href="#Node-Red-Code" class="headerlink" title="Node-Red Code"></a>Node-Red Code</h4><p>Dust Sensor Serial 포트에서 읽어 오는 방법입니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust-Serial.PNG?raw=true" alt="dust(Serial)"></p>
+<p>PMS5003 센서의 데이터를 가져오기 위해 파서를 사용하여 활용 데이터를 뽑아냅니다.</p>
+<p>[PMS5003 DataSheet</p>
+<p>](<a href="http://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf" target="_blank" rel="noopener">http://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf</a>)</p>
+<h4 id="DUST-Sensor의-플로우-구조입니다"><a href="#DUST-Sensor의-플로우-구조입니다" class="headerlink" title="DUST Sensor의 플로우 구조입니다."></a>DUST Sensor의 플로우 구조입니다.</h4><p>Node-Red를 사용하면 Serial 통신도 손쉽게 할 수 있습니다. 팔렛트 라는 구조를 사용하여 내가 필요한 모듈을 다운받고 사용하기만 하면 비 개발자도 손쉽게 코딩할 수 있는 환경이 만들어 집니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dust-nodered.PNG?raw=true" alt="DUST FLOW"></p>
+<pre><code>msg.topic = &apos;PMS5003&apos;;
+
+let sensorData = msg.payload;
+
+if(sensorData[0] != 0x42 || sensorData[1] != 0x4d)
+
+msg.payload = &apos;startdata error&apos;;
+
+else
+
+msg.sensorData = sensorData;
+
+return msg;
+</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
+<pre><code>if(msg.checksum) {
+
+let sensorData = msg.sensorData;
+
+msg.pm01std = parseInt(sensorData[4],10)*16*16 + parseInt(sensorData[5],10);
+
+msg.pm25std = parseInt(sensorData[6],10)*16*16 + parseInt(sensorData[7],10);
+
+msg.pm10std = parseInt(sensorData[8],10)*16*16 + parseInt(sensorData[9],10);
+
+msg.pm01atm = parseInt(sensorData[10],10)*16*16 + parseInt(sensorData[11],10);
+
+msg.pm25atm = parseInt(sensorData[12],10)*16*16 + parseInt(sensorData[13],10);
+
+msg.pm10atm = parseInt(sensorData[14],10)*16*16 + parseInt(sensorData[15],10);
+
+msg.p03um01L = parseInt(sensorData[16],10)*16*16 + parseInt(sensorData[17],10);
+
+msg.p05um01L = parseInt(sensorData[18],10)*16*16 + parseInt(sensorData[19],10);
+
+msg.p10um01L = parseInt(sensorData[20],10)*16*16 + parseInt(sensorData[21],10);
+
+msg.p25um01L = parseInt(sensorData[22],10)*16*16 + parseInt(sensorData[23],10);
+
+msg.p50um01L = parseInt(sensorData[24],10)*16*16 + parseInt(sensorData[25],10);
+
+msg.p100um01L = parseInt(sensorData[26],10)*16*16 + parseInt(sensorData[27],10);
+
+msg.isParsed = true;
+
+} else msg.isParsed = false;
+
+return msg;
+</code></pre><p>위의 PMS5003 의 Data Sheet를 사용하여 특정 비트에 쌓인 데이터가 무엇을 의미하는지 파악하고 필요한 정보만 골라내어 볼 수 있도록 설정합니다.</p>
+<h4 id="온습도센서-설정-방법"><a href="#온습도센서-설정-방법" class="headerlink" title="온습도센서 설정 방법"></a>온습도센서 설정 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht-nodered.PNG?raw=true" alt="DHT FLOW"></p>
+<p>온습도센서와 같은 경우에는 Node-Red에서 제공해주는 DHT 센서 팔렛트가 있기 때문에 센서를 사용하여 핀맵만 설정해주면 바로 온습도 센서 데이터를 사용할 수 있습니다.</p>
+<h4 id="대시보드-구성-방법"><a href="#대시보드-구성-방법" class="headerlink" title="대시보드 구성 방법"></a>대시보드 구성 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dashboard-nodered.PNG?raw=true" alt="DashBoard FLOW"></p>
+<p>맨 오른쪽의 청록색 UI들이 실제 node-Red/UI 상에 표현되는 Box입니다. 실제 위에서 아래쪽으로 UI가 그리드 형태로 작성되며 완성된 UI는 아래와 같습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/rdashboard.PNG?raw=true" alt="DashBoard FLOW"></p>
+<h4 id="IoT-플랫폼과-연동-방법"><a href="#IoT-플랫폼과-연동-방법" class="headerlink" title="IoT 플랫폼과 연동 방법"></a>IoT 플랫폼과 연동 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/iotP-nodered.PNG?raw=true" alt="iotP FLOW"></p>
+<h3 id="느낀점"><a href="#느낀점" class="headerlink" title="느낀점"></a>느낀점</h3><p>IoT 플랫폼과 연동하지 않아도 MQTT나 직접 DATA 스토리지를 만들어서 손쉽게 프로그램을 만들 수 있습니다.<br>하지만 플랫폼을 사용하는 이유는 다른 System 과의 원활한 연계(현재로써는 데이터)를 위하여 사용하는 것이라고 생각합니다. 때문에 이 이후에 Spring 으로 통합 DashBoard 를 생성할때에는 플랫폼을 사용하여 데이터를 손쉽게 제공 받고 연구소 출입문에 설치된 연구소 미세 먼지 현황을 쉽게 작성 할 수 있었습니다.<br>이와 같이 플랫폼의 의미를 더욱 높이기 위해 더 많은 확산과 공유가 필요하다고 생각하게 된 과제 였습니다.</p>
+<p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/totaldash.png?raw=true" alt="iotP FLOW"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/18/newtech-deepracer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1536,177 +1848,6 @@ v8.11.3
         
           
             <h2 id="제목"><a href="#제목" class="headerlink" title="제목"></a>제목</h2><p>나의 첫번째 포스트입니다.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/15/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Hongmin Bae">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Kongs">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/04/15/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-15 11:40:38" itemprop="dateCreated datePublished" datetime="2019-04-15T11:40:38+09:00">2019-04-15</time>
-            
-
-            
-          </span>
-
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/04/15/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/hello-world/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-            <span id="/2019/04/15/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Views: </span>
-              
-                <span class="leancloud-visitors-count"></span>
-            </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
           
         
