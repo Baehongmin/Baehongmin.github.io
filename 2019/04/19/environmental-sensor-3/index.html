@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -517,8 +517,7 @@ else
 
 msg.sensorData = sensorData;
 
-return msg;
-</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
+return msg;</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
 <pre><code>if(msg.checksum) {
 
 let sensorData = msg.sensorData;
@@ -551,8 +550,7 @@ msg.isParsed = true;
 
 } else msg.isParsed = false;
 
-return msg;
-</code></pre><p>위의 PMS5003 의 Data Sheet를 사용하여 특정 비트에 쌓인 데이터가 무엇을 의미하는지 파악하고 필요한 정보만 골라내어 볼 수 있도록 설정합니다.</p>
+return msg;</code></pre><p>위의 PMS5003 의 Data Sheet를 사용하여 특정 비트에 쌓인 데이터가 무엇을 의미하는지 파악하고 필요한 정보만 골라내어 볼 수 있도록 설정합니다.</p>
 <h4 id="온습도센서-설정-방법"><a href="#온습도센서-설정-방법" class="headerlink" title="온습도센서 설정 방법"></a>온습도센서 설정 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht-nodered.PNG?raw=true" alt="DHT FLOW"></p>
 <p>온습도센서와 같은 경우에는 Node-Red에서 제공해주는 DHT 센서 팔렛트가 있기 때문에 센서를 사용하여 핀맵만 설정해주면 바로 온습도 센서 데이터를 사용할 수 있습니다.</p>
 <h4 id="대시보드-구성-방법"><a href="#대시보드-구성-방법" class="headerlink" title="대시보드 구성 방법"></a>대시보드 구성 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dashboard-nodered.PNG?raw=true" alt="DashBoard FLOW"></p>
@@ -693,7 +691,7 @@ return msg;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -771,7 +769,13 @@ return msg;
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -857,7 +861,7 @@ return msg;
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 

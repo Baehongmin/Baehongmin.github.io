@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요. 해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
+  <meta name="description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요.해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
 <meta name="keywords" content="tech,algorithm,euler,project-euler,math">
 <meta property="og:type" content="article">
 <meta property="og:title" content="project-euler-4">
 <meta property="og:url" content="https://baehongmin.github.io/2019/06/25/project-euler-4/index.html">
 <meta property="og:site_name" content="Kongs">
-<meta property="og:description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요. 해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
+<meta property="og:description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요.해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2019-06-25T04:13:33.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="project-euler-4">
-<meta name="twitter:description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요. 해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
+<meta name="twitter:description" content="Project EulerProblem 7소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.  이 때 10,001번째의 소수를 구하세요.해답//Euler 7번  //10001번째 소수  // ArrayList로 구현  ArrayList&amp;lt;Boolean&amp;gt; primeList;  int n = 1000000;  //">
 
 
 
@@ -423,8 +423,7 @@
       
         <h1 id="Project-Euler"><a href="#Project-Euler" class="headerlink" title="Project Euler"></a>Project Euler</h1><h2 id="Problem-7"><a href="#Problem-7" class="headerlink" title="Problem 7"></a>Problem 7</h2><pre><code>소수를 크기 순으로 나열하면 2, 3, 5, 7, 11, 13, ... 과 같이 됩니다.
 
-이 때 10,001번째의 소수를 구하세요.
-</code></pre><h2 id="해답"><a href="#해답" class="headerlink" title="해답"></a>해답</h2><pre><code>//Euler 7번
+이 때 10,001번째의 소수를 구하세요.</code></pre><h2 id="해답"><a href="#해답" class="headerlink" title="해답"></a>해답</h2><pre><code>//Euler 7번
 
 //10001번째 소수
 
@@ -475,8 +474,7 @@ System.out.println(num+ &quot; 번쨰: &quot; + count);
 
 break;    }    
 num++;
-}        }
-</code></pre><p>에라토스테네스의 채를 사용하여 풀어봤습니다. 그냥 n을 100000까지 생성해서 거기안에서 10001 번째 소수를 찾는걸 해보았습니다.<br>소수가 더 증가하면 증가할수록 몇까지 메모리를 할당해야할지… 전혀 모릅니다.<br>코드를 수정해서 10001번째 소수를 찾을 수 있도록 하는 프로그램으로 바꿀 예정입니다.</p>
+}        }</code></pre><p>에라토스테네스의 채를 사용하여 풀어봤습니다. 그냥 n을 100000까지 생성해서 거기안에서 10001 번째 소수를 찾는걸 해보았습니다.<br>소수가 더 증가하면 증가할수록 몇까지 메모리를 할당해야할지… 전혀 모릅니다.<br>코드를 수정해서 10001번째 소수를 찾을 수 있도록 하는 프로그램으로 바꿀 예정입니다.</p>
 <h2 id="후기"><a href="#후기" class="headerlink" title="후기"></a>후기</h2><p>소수를 구하는 방법에 대해서 자기자신 과 1밖에는 나눠지지 않는 방법으로 푸른게 알고리즘적으로 더 좋은 방법이 아닐 거라고 생각하지만 n번째 소수를 구하는 문제에 관해서는 순차적으로 가는게 더 빠를 수도 있지않을까 생각해보지만 혼자만 고민합니다… 핳핳</p>
 
       
@@ -610,7 +608,7 @@ num++;
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -688,7 +686,13 @@ num++;
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -774,7 +778,7 @@ num++;
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 

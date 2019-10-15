@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -293,6 +293,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/project-euler-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/19/project-euler-1/" class="post-title-link" itemprop="url">project-euler-1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 16:37:38 / Modified: 17:31:36" itemprop="dateCreated datePublished" datetime="2019-04-19T16:37:38+09:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/project-euler/" itemprop="url" rel="index"><span itemprop="name">project-euler</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/19/project-euler-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/project-euler-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/19/project-euler-1/" class="leancloud_visitors" data-flag-title="project-euler-1">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/math.jpg?raw=true" alt="수학화면"></p>
+<p>  우연히 웹서핑하다가 프로젝트 오일러라는 문제를 봐서 틈틈히 풀어볼까 합니다.<br>  어려워요.. ㅜㅜ 나는 진짜 알고리즘 OO 이구나… 라는 생각을 많이 하게 됩니다.  </p>
+<h1 id="Project-Euler"><a href="#Project-Euler" class="headerlink" title="Project Euler"></a>Project Euler</h1><blockquote>
+<p> 여기 실린 문제들을 풀려면 수학적인 지식이나 프로그래밍 솜씨 한가지만으로는 충분하지 않습니다. 수학적인 지식이 있다면 좀 더<br>우아하고 효율적인 방법을 찾을 수 있겠지만, 대부분의 경우 문제를 해결하려면 컴퓨터에 대한 지식과 프로그래밍 기법을 동원해야<br>합니다.</p>
+<p>새로운 분야에 대한 탐구심을 키워가고, 재미있게 즐기는 중에 새로운 개념을 하나 둘 알아갈 수 있는 장을 마련하자는 것이 이<br>프로젝트를 시작해서 지금까지 이르게 된 동기라고 할 수 있겠습니다.</p>
+</blockquote>
+<p><a href="http://euler.synap.co.kr/" target="_blank" rel="noopener">프로젝트 오일러 사이트</a></p>
+<p>저는… JAVA로 풀어보려고합니다. C가 원래 더 편했는데 C 툴을 안깔아놨네요.. ㅜㅜ</p>
+<h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h2><p>첫 번째 문제는 생각보다 쉽긴하네요 그냥 for/if 문으로 풀어보았습니다.<br>다른방법으로 푸신 분들도 많긴하던데…. 신기합니다. 가장 심플하게 풀어보았습니다.</p>
+<pre><code>//1000보다 작은 자연수 중에서 3 또는 5의 배수를 모두 더하면?
+int result = 0;
+for(int i=0;i&lt;1000;i++) {
+    if(i%3 == 0||i%5 == 0) {
+        result = result + i;
+    }
+}
+System.out.println(result);</code></pre><h2 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h2><p>정말 피보나치 수열이 어렵… 난 수학이 너무어렵…. 무슨말인지도 모르겟지만 풀긴해봤습니다.</p>
+<pre><code>//피보나치 수열의 짝수이면서 4백만 이하인 모든항
+int pre = 1, sum = 0;
+for(int i = 1; i&lt;4000000;) {
+    int next = pre + i;
+    pre = i;
+    i = next;
+    System.out.println(next);
+    if(i%2==0){
+        sum += next;
+    }
+}
+System.out.println(sum);</code></pre><h2 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h2><pre><code>//소인수 중에서 가장 큰 수 구하기 에라토스테네스의 체 알고리즘
+// ArrayList로 구현
+ArrayList&lt;Boolean&gt; primeList;
+int n = 10000;
+// n+1만큼 할당
+primeList = new ArrayList&lt;Boolean&gt;(n+1);
+// 0번째와 1번째를 소수 아님으로 처리
+primeList.add(false);
+primeList.add(false);
+// 2~ n 까지 소수로 설정
+for(int i=2; i&lt;=n; i++ )
+    primeList.add(i, true);
+// 2 부터  ~ i*i &lt;= n
+// 각각의 배수들을 지워간다.
+for(int i=2; (i*i)&lt;=n; i++){
+    if(primeList.get(i)){
+        for(int j = i*i; j&lt;=n; j+=i) {
+            primeList.set(j, false);
+        }
+    }
+}
+long k = 600851475143L;
+StringBuffer sb = new StringBuffer();
+for(int i=0; i&lt;=n; i++){
+    if(primeList.get(i) == true){
+        if(k%i == 0) {
+            k = k/i;
+        }
+        if(k == 1) {
+            sb.append(i);
+            sb.append(&quot; end&quot;);
+            break;
+        }
+    }
+}
+System.out.println(sb.toString());</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/environmental-sensor-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -505,8 +752,7 @@ else
 
 msg.sensorData = sensorData;
 
-return msg;
-</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
+return msg;</code></pre><p>PMS5003 센서의 데이터를 가져오기 위해 헤더를 검사합니다.</p>
 <pre><code>if(msg.checksum) {
 
 let sensorData = msg.sensorData;
@@ -539,8 +785,7 @@ msg.isParsed = true;
 
 } else msg.isParsed = false;
 
-return msg;
-</code></pre><p>위의 PMS5003 의 Data Sheet를 사용하여 특정 비트에 쌓인 데이터가 무엇을 의미하는지 파악하고 필요한 정보만 골라내어 볼 수 있도록 설정합니다.</p>
+return msg;</code></pre><p>위의 PMS5003 의 Data Sheet를 사용하여 특정 비트에 쌓인 데이터가 무엇을 의미하는지 파악하고 필요한 정보만 골라내어 볼 수 있도록 설정합니다.</p>
 <h4 id="온습도센서-설정-방법"><a href="#온습도센서-설정-방법" class="headerlink" title="온습도센서 설정 방법"></a>온습도센서 설정 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dht-nodered.PNG?raw=true" alt="DHT FLOW"></p>
 <p>온습도센서와 같은 경우에는 Node-Red에서 제공해주는 DHT 센서 팔렛트가 있기 때문에 센서를 사용하여 핀맵만 설정해주면 바로 온습도 센서 데이터를 사용할 수 있습니다.</p>
 <h4 id="대시보드-구성-방법"><a href="#대시보드-구성-방법" class="headerlink" title="대시보드 구성 방법"></a>대시보드 구성 방법</h4><p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/dashboard-nodered.PNG?raw=true" alt="DashBoard FLOW"></p>
@@ -738,10 +983,9 @@ return msg;
 2.  훈련된 모델을 선택한 트랙에서 평가하면서 수행 방식을 관찰하고, 모델 튜닝 방식을 결정합니다.
 
 3.  훈련된 모델을 AWS DeepRacer 차량으로 배포합니다. 
-    물리적 환경에 대한 AWS DeepRacer 트랙 사양에 따라 만든 트랙에서 차량이 스스로 주행하도록 합니다.
-</code></pre><h2 id="강화-학습-모델을-만들어-보쟈"><a href="#강화-학습-모델을-만들어-보쟈" class="headerlink" title="강화 학습 모델을 만들어 보쟈!"></a>강화 학습 모델을 만들어 보쟈!</h2><p><strong><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/Readme-Korean.md#step-3-create-model" target="_blank" rel="noopener">딥레이서 한국 서밋 블로그</a><br>요기를 참조하시면 더 자세하게 설명 되어 있습니다만. 제가 이해하려고 만든 문서기 때문에 필요한 부분만 가져옵니다.</strong></p>
+    물리적 환경에 대한 AWS DeepRacer 트랙 사양에 따라 만든 트랙에서 차량이 스스로 주행하도록 합니다.</code></pre><h2 id="강화-학습-모델을-만들어-보쟈"><a href="#강화-학습-모델을-만들어-보쟈" class="headerlink" title="강화 학습 모델을 만들어 보쟈!"></a>강화 학습 모델을 만들어 보쟈!</h2><p><strong><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/Readme-Korean.md#step-3-create-model" target="_blank" rel="noopener">딥레이서 한국 서밋 블로그</a><br>요기를 참조하시면 더 자세하게 설명 되어 있습니다만. 제가 이해하려고 만든 문서기 때문에 필요한 부분만 가져옵니다.</strong></p>
 <h3 id="Step-1-AWS-DeepRacer-서비스-로그인"><a href="#Step-1-AWS-DeepRacer-서비스-로그인" class="headerlink" title="Step 1: AWS DeepRacer 서비스 로그인"></a>Step 1: AWS DeepRacer 서비스 로그인</h3><blockquote>
-<p>계정 정보를 이용하여 Preview 계정이 있거나 Summit에서 받은 계졍을 통해서   <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fnc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgs%2523%26isauthcode%3Dtrue&amp;client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&amp;forceMobileApp=0" target="_blank" rel="noopener">AWS<br>Console</a>  에 로그인 합니다.</p>
+<p>계정 정보를 이용하여 Preview 계정이 있거나 Summit에서 받은 계졍을 통해서   <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fnc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&forceMobileApp=0" target="_blank" rel="noopener">AWS<br>Console</a>  에 로그인 합니다.</p>
 </blockquote>
 <p>물론 Summit 에서 받은 계정은 몇일 못쓰고 잠깁니다……</p>
 <blockquote>
@@ -796,8 +1040,7 @@ return msg;
 <th>설명</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>all_wheels_on_track</td>
 <td>params[‘all_wheels_on_track’]</td>
 <td>Boolean</td>
@@ -881,8 +1124,7 @@ return msg;
 <td>Integer</td>
 <td>가까운 이전waypoint 인덱스와 가까운 다음 waypoint의 인덱스를 목록으로 반환합니다. params[‘closest_waypoints’][0] 는 가까운 이전 waypoint의 인덱스를 반환하고, params[‘closest_waypoints’][1] 는 가까운 다음 waypoint의 인덱스를 반환합니다.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>보상 함수에서 사용할 수 있는 변수들을 설명하는 그림입니다.</p>
 <p><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/reward_function_parameters_illustration.png" target="_blank" rel="noopener"><img src="https://github.com/aws-samples/aws-deepracer-workshops/raw/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/reward_function_parameters_illustration.png" alt="rewardparams"></a></p>
 <p>아래는 re:Invent track 에서 사용 되는 waypoints에 대한 그림입니다. 보상 함수에서는 중심선의 waypoint만 사용할 수 있습니다. 아래의 그래프는 보상 함수에서 waypoint 값을 print한 후, 이를 plot하여 얻을 수 있습니다. 보상 함수에서 print 함수를 사용하면, 출력이 AWS RoboMaker의 로그에 저장됩니다. 다른 트랙들에 대해서도 마찬가지로 그려 볼 수 있습니다. 로그들에 대해서는 다음에 논의 할 것입니다.</p>
@@ -907,8 +1149,7 @@ elif params[&apos;distance_from_center&apos;] &lt;= marker_3:
 else:
     reward = 1e-3  # likely crashed/ close to off track
 
-return float(reward)
-</code></pre><p>Hint: 보상을 0으로 주지 마십시오. 보상 값이 0일 때, 저희가 사용하는 옵티마이저(optimizer)가 어려움을 겪을 수 있습니다. 마지막 else 절에서 아주 작은 값을 사용하는 것은 그 이유 때문입니다.</p>
+return float(reward)</code></pre><p>Hint: 보상을 0으로 주지 마십시오. 보상 값이 0일 때, 저희가 사용하는 옵티마이저(optimizer)가 어려움을 겪을 수 있습니다. 마지막 else 절에서 아주 작은 값을 사용하는 것은 그 이유 때문입니다.</p>
 <p><strong>Example 2</strong>: 과도한 조향에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
 <p>def reward_function(params):<br>    ‘’’<br> Example that penalizes steering, which helps mitigate zig-zag behaviors<br> ‘’’</p>
 <pre><code># Calculate 3 marks that are farther and father away from the center line
@@ -933,8 +1174,7 @@ ABS_STEERING_THRESHOLD = 15
 if abs(params[&apos;steering_angle&apos;]) &gt; ABS_STEERING_THRESHOLD:  # Only need the absolute steering angle
     reward *= 0.5
 
-return float(reward)      
-</code></pre><p><strong>Example 3</strong>: 저속 주행에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
+return float(reward)      </code></pre><p><strong>Example 3</strong>: 저속 주행에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
 <p>def reward_function(params):<br>    ‘’’<br> Example that penalizes slow driving. This create a non-linear reward function so it may take longer to learn.<br> ‘’’</p>
 <pre><code># Calculate 3 marks that are farther and father away from the center line
 marker_1 = 0.1 * params[&apos;track_width&apos;]
@@ -959,8 +1199,7 @@ SPEED_THRESHOLD = 2
 if params[&apos;speed&apos;] &lt; SPEED_THRESHOLD:
     reward *= 0.5
 
-return float(reward)
-</code></pre><p>이제 위의 예제들을 사용해 여러분의 보상 함수를 만들어 봅시다. 다음은 몇 가지 추가 Tip 입니다:</p>
+return float(reward)</code></pre><p>이제 위의 예제들을 사용해 여러분의 보상 함수를 만들어 봅시다. 다음은 몇 가지 추가 Tip 입니다:</p>
 <ul>
 <li>waypoints 를 사용하여 한 waypoint 에서 다음 waypoint 로의 방향을 계산할 수 있습니다.</li>
 <li>보상을 기하 급수로 조정할 수 있으나 최대 10,000으로 제한하십시오.</li>
@@ -971,7 +1210,7 @@ return float(reward)
 <p>위의 첫 번째 예제를 사용한 보상 함수가 있습니다</p>
 <p><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/NewReward.png" target="_blank" rel="noopener"><img src="https://github.com/aws-samples/aws-deepracer-workshops/raw/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/NewReward.png" alt="rewardfunction"></a></p>
 <h2 id="여기까지…"><a href="#여기까지…" class="headerlink" title="여기까지…."></a>여기까지….</h2><p>일단은 여기까지 복사 하고 이해 했습니다. 앞으로 더 빠른 Reward 알고리즘을 만들고 싶다면 혁신적인 알고리즘을 세팅하는 방법이 있지만 알고리즘을 잘 알지 못한다면 함수를 최대한 이용하여 만드는 것이 성능 향상에 도움이 됩니다.<br>만든 시뮬레이션의 성능을 확인하고 싶다면 위의 깃허브의 아래 부분에 시뮬레이션을 돌리는 방법이나 대회에 나가는 방법에 대해서 다루고 있습니다.<br>이상입니다.</p>
-<p><a href="https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0" target="_blank" rel="noopener">https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0</a></p>
+<p><a href="https://forums.aws.amazon.com/thread.jspa?threadID=297469&tstart=0" target="_blank" rel="noopener">https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0</a></p>
 
           
         
@@ -1177,11 +1416,7 @@ return float(reward)
 <li><code>type</code>을 <code>Device</code>로 나누는게 좋을 것 같다.</li>
 </ol>
 <blockquote>
-<p><code>Device</code> 별로 <code>Aggregation</code>을 구하는 일이 더 많을 것이기 때문에</p>
-<ol start="4">
-<li>3번과 같은 방법으로 Dataset을 구성한다면 굳이 Label을 사용할 필요가 없어 진다.</li>
-<li>매장당 Device가 1개라고 가정하면 Type 안에 Label을 사용하지 않아도 Type만으로도 충분히 구분 가능 하다.</li>
-</ol>
+<p><code>Device</code> 별로 <code>Aggregation</code>을 구하는 일이 더 많을 것이기 때문에<br>4. 3번과 같은 방법으로 Dataset을 구성한다면 굳이 Label을 사용할 필요가 없어 진다.<br>5. 매장당 Device가 1개라고 가정하면 Type 안에 Label을 사용하지 않아도 Type만으로도 충분히 구분 가능 하다.</p>
 </blockquote>
 <h2 id="타-기업-Elastic-활용-사례"><a href="#타-기업-Elastic-활용-사례" class="headerlink" title="타 기업 Elastic 활용 사례"></a>타 기업 Elastic 활용 사례</h2><p>타 기업에서 <code>Elastic Data</code>를 어떠한 방법으로 저장하는지에 대해서 알아 보고자 합니다.<br>물론 많은 데이터가 존재하지 않습니다. –&gt; 실제 <code>Project</code>와 관련되어있음</p>
 <h3 id="RIDI-BOOKS"><a href="#RIDI-BOOKS" class="headerlink" title="RIDI BOOKS"></a>RIDI BOOKS</h3><p>Elasticsearch에서 색인에 별명을 붙여줄 수 있는데 이를 <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-aliases.html" target="_blank" rel="noopener">색인 별명(Index Aliases)</a>이라고 합니다.</p>
@@ -1641,28 +1876,17 @@ return float(reward)
 <li>IoT Platform 으로 데이터를 띄울 기술 (MQTT, JSON)</li>
 <li>Nodejs를 사용해서 스마트 미러에 데이터를 취합 기술 (HTTP CONNECTION, AJAX)</li>
 </ul>
-<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><p><strong>1.  라즈베리파이 SETTING</strong></p>
-<ol start="2">
-<li>SENSOR CONNECTION</li>
-<li>SENSOR VALUE 가져오는 방법 및 코드</li>
-<li>SENSOR VALUE를 화면으로 띄우는 방법</li>
-<li>플랫폼으로 데이터 전송방법</li>
-<li>플랫폼 데이터를 스마트 미러에 띄우기</li>
-</ol>
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><p><strong>1.  라즈베리파이 SETTING</strong><br>2.  SENSOR CONNECTION<br>3.  SENSOR VALUE 가져오는 방법 및 코드<br>4.  SENSOR VALUE를 화면으로 띄우는 방법<br>5.  플랫폼으로 데이터 전송방법<br>6.  플랫폼 데이터를 스마트 미러에 띄우기</p>
 <h2 id="라즈베리파이-SETTING"><a href="#라즈베리파이-SETTING" class="headerlink" title="라즈베리파이 SETTING"></a>라즈베리파이 SETTING</h2><p>소프트 웨어는 <strong>Raspbian Stretch</strong> 를 사용하였습니다. 하드웨어는 라즈베리파이 3B 버전을 사용하였습니다.<br>라즈비안 Stretch 버전은 <a href="https://www.raspberrypi.org/downloads/raspbian/" target="_blank" rel="noopener">라즈베리파이 홈페이지</a>에 가셔서 다운로드 받으시면 됩니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/rasbianStrechDownload.jpg?raw=true" alt="라즈비안 다운로드 페이지"><br>위에서 받은 라즈비안 이미지를 SD카드에 업로드 시켜야 합니다.<br>업로드 할때 사용한 프로그램은 <strong>Etcher</strong> 라는 프로그램입니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/balenaEtcher.png?raw=true" alt="라즈비안 다운로드 페이지"><br>SD카드는 라즈비안 이미지 크기보다 큰 용량을 가지고 있어야 합니다.<br><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/desktop.png?raw=true" alt="데스크탑 페이지"><br>정상적으로 이미지를 SD카드에 옮기고 라즈베리를 켜게 되면 위와 같은 바탕화면이 나오게 됩니다. </p>
 <h3 id="라즈베리-파이-3-시리얼-블루투스-문제"><a href="#라즈베리-파이-3-시리얼-블루투스-문제" class="headerlink" title="라즈베리 파이 3 시리얼/블루투스 문제"></a>라즈베리 파이 3 시리얼/블루투스 문제</h3><blockquote>
 <p>라즈베리 파이 3로 오면서 무선랜/블루투스 기능 추가를 위해 Broadcom의 BCM43438 칩을 사용하고 있는데 무선랜<br>기능은 SDIO로 연결하지만 블루투스 기능은 UART0으로 연결을 하고 시리얼 포트 핀은 UART1에 연결되도록 구조가<br>변경되었다. 그러므로 그 동안 아무 문제 없이 시리얼 포트를 사용하던 프로그램이 라즈베리 파이 3로 오면서 블루투스를 사용하게<br>되면 제대로 동작을 할 수 없게 되어 버린 것이다.</p>
 </blockquote>
 <p>위와 같은 상황이 벌어져 Setting을 약간 해야 된다고 합니다.<br><a href="https://arsviator.blogspot.com/2016/08/3-raspberry-pi-3-uartbluetooth-problem.html" target="_blank" rel="noopener">라즈베리 파이 3 시리얼/블루투스 문제</a><br>자세한 내용은 위의 블로그를 참조하면 좋습니다.</p>
-<pre><code>‘/boot/config.txt’에 ‘dtoverlay=pi3-disable-bt’
-</code></pre><p>를 추가</p>
+<pre><code>‘/boot/config.txt’에 ‘dtoverlay=pi3-disable-bt’</code></pre><p>를 추가</p>
 <p>UART1을 사용하지 않는걸로 해서 블루투스를 비활성화 시킨다.</p>
-<pre><code>&quot;sudo systemctl disable hciuart&quot;&quot;sudosystemctldisablehciuart&quot;
-</code></pre><p>명령을 추가로 실행합니다.</p>
-<h3 id="RaspberryPi-Wifi-Setting"><a href="#RaspberryPi-Wifi-Setting" class="headerlink" title="RaspberryPi Wifi Setting"></a>RaspberryPi Wifi Setting</h3><pre><code>Sudo iwlist wlan0 scan
-</code></pre><p>랜카드가 인식한 와이파이 리스트가 리스트업 됩니다. 검색된 무선 공유기의 ESSID를 확인한 후 연결할 와이파이를 확실하게 적어놔야 합니다.</p>
-<pre><code>sudo nano /etc/network/interfaces
-</code></pre><p> <img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/wifisetting.png?raw=true" alt="와이파이 세팅 페이지"></p>
+<pre><code>&quot;sudo systemctl disable hciuart&quot;&quot;sudosystemctldisablehciuart&quot;</code></pre><p>명령을 추가로 실행합니다.</p>
+<h3 id="RaspberryPi-Wifi-Setting"><a href="#RaspberryPi-Wifi-Setting" class="headerlink" title="RaspberryPi Wifi Setting"></a>RaspberryPi Wifi Setting</h3><pre><code>Sudo iwlist wlan0 scan</code></pre><p>랜카드가 인식한 와이파이 리스트가 리스트업 됩니다. 검색된 무선 공유기의 ESSID를 확인한 후 연결할 와이파이를 확실하게 적어놔야 합니다.</p>
+<pre><code>sudo nano /etc/network/interfaces</code></pre><p> <img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/wifisetting.png?raw=true" alt="와이파이 세팅 페이지"></p>
 <p><strong>SSID와 비밀번호</strong>를 확실하게 입력해줘야 합니다. 그렇지 않으면 연결이 되지 않기 때문입니다.<br>또한 inet 옆에 DHCP를 입력하면 Address나 netmask, gateway를 따로 입력하지 않아도 됩니다.<br>static을 입력했다면 망에서 <strong>IP충돌이 나지 않는 번호를 입력</strong>하여 직접 할당을 해줘야한다. 유선이 아니더라도 무선에서도 가능하다.</p>
 <p>여기서 wpa-ssid 옆에 문자열로 방금 전 검색한 ESSID를 입력하고 wap-psk 옵션에는 비밀번호를 입력한다.</p>
 <p>You can rename the current file by clicking the file name in the navigation bar or by clicking the <strong>Rename</strong> button in the file explorer.</p>
@@ -1671,16 +1895,12 @@ return float(reward)
 <p>pi@raspberrypi:~ $ wget<br><a href="https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz" target="_blank" rel="noopener">https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-armv7l.tar.xz</a></p>
 </blockquote>
 <p> 위의 다운로드한 파일을 아래와 같은 명령어를 통해 압축을 풉니다.</p>
-<pre><code>pi@raspberrypi:~ $ tar -xvf node-v8.11.3-linux-armv7l.tar.xz
-</code></pre><p>압축을 풀면 같은 이름의 디렉토리가 생성됩니다. 원하는 곳으로 옮기고자 한다면 아래의 명령어를 치면 됩니다.</p>
-<pre><code>pi@raspberrypi:~ $ sudo mv node-v8.11.3-linux-armv7l /{원하는 폴더}
-</code></pre><p>기존에 설치되어 있던 nodejs를 삭제합니다.</p>
-<pre><code>pi@raspberrypi:~ $ sudo apt remove nodejs
-</code></pre><p>정상적으로 동작하는지 확인합니다.</p>
+<pre><code>pi@raspberrypi:~ $ tar -xvf node-v8.11.3-linux-armv7l.tar.xz</code></pre><p>압축을 풀면 같은 이름의 디렉토리가 생성됩니다. 원하는 곳으로 옮기고자 한다면 아래의 명령어를 치면 됩니다.</p>
+<pre><code>pi@raspberrypi:~ $ sudo mv node-v8.11.3-linux-armv7l /{원하는 폴더}</code></pre><p>기존에 설치되어 있던 nodejs를 삭제합니다.</p>
+<pre><code>pi@raspberrypi:~ $ sudo apt remove nodejs</code></pre><p>정상적으로 동작하는지 확인합니다.</p>
 <pre><code>pi@raspberrypi:~ $ node --version
 
-v8.11.3
-</code></pre><h3 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h3><p>다음 페이지 에서는 라즈베리 파이와 Sensor를 연결하는 것과<br>NodeMCU 와 Sensor를 연결하는 방법에 대해서 다루도록 하겠습니다.</p>
+v8.11.3</code></pre><h3 id="이후-해야될-작업"><a href="#이후-해야될-작업" class="headerlink" title="이후 해야될 작업"></a>이후 해야될 작업</h3><p>다음 페이지 에서는 라즈베리 파이와 Sensor를 연결하는 것과<br>NodeMCU 와 Sensor를 연결하는 방법에 대해서 다루도록 하겠습니다.</p>
 
           
         
@@ -1935,7 +2155,7 @@ v8.11.3
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2013,7 +2233,13 @@ v8.11.3
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2082,7 +2308,7 @@ v8.11.3
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 

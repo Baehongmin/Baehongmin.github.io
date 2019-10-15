@@ -15,7 +15,7 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -434,10 +434,9 @@
 2.  훈련된 모델을 선택한 트랙에서 평가하면서 수행 방식을 관찰하고, 모델 튜닝 방식을 결정합니다.
 
 3.  훈련된 모델을 AWS DeepRacer 차량으로 배포합니다. 
-    물리적 환경에 대한 AWS DeepRacer 트랙 사양에 따라 만든 트랙에서 차량이 스스로 주행하도록 합니다.
-</code></pre><h2 id="강화-학습-모델을-만들어-보쟈"><a href="#강화-학습-모델을-만들어-보쟈" class="headerlink" title="강화 학습 모델을 만들어 보쟈!"></a>강화 학습 모델을 만들어 보쟈!</h2><p><strong><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/Readme-Korean.md#step-3-create-model" target="_blank" rel="noopener">딥레이서 한국 서밋 블로그</a><br>요기를 참조하시면 더 자세하게 설명 되어 있습니다만. 제가 이해하려고 만든 문서기 때문에 필요한 부분만 가져옵니다.</strong></p>
+    물리적 환경에 대한 AWS DeepRacer 트랙 사양에 따라 만든 트랙에서 차량이 스스로 주행하도록 합니다.</code></pre><h2 id="강화-학습-모델을-만들어-보쟈"><a href="#강화-학습-모델을-만들어-보쟈" class="headerlink" title="강화 학습 모델을 만들어 보쟈!"></a>강화 학습 모델을 만들어 보쟈!</h2><p><strong><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/Readme-Korean.md#step-3-create-model" target="_blank" rel="noopener">딥레이서 한국 서밋 블로그</a><br>요기를 참조하시면 더 자세하게 설명 되어 있습니다만. 제가 이해하려고 만든 문서기 때문에 필요한 부분만 가져옵니다.</strong></p>
 <h3 id="Step-1-AWS-DeepRacer-서비스-로그인"><a href="#Step-1-AWS-DeepRacer-서비스-로그인" class="headerlink" title="Step 1: AWS DeepRacer 서비스 로그인"></a>Step 1: AWS DeepRacer 서비스 로그인</h3><blockquote>
-<p>계정 정보를 이용하여 Preview 계정이 있거나 Summit에서 받은 계졍을 통해서   <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fnc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgs%2523%26isauthcode%3Dtrue&amp;client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&amp;forceMobileApp=0" target="_blank" rel="noopener">AWS<br>Console</a>  에 로그인 합니다.</p>
+<p>계정 정보를 이용하여 Preview 계정이 있거나 Summit에서 받은 계졍을 통해서   <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3Fnc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgs%2523%26isauthcode%3Dtrue&client_id=arn%3Aaws%3Aiam%3A%3A015428540659%3Auser%2Fhomepage&forceMobileApp=0" target="_blank" rel="noopener">AWS<br>Console</a>  에 로그인 합니다.</p>
 </blockquote>
 <p>물론 Summit 에서 받은 계정은 몇일 못쓰고 잠깁니다……</p>
 <blockquote>
@@ -492,8 +491,7 @@
 <th>설명</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>all_wheels_on_track</td>
 <td>params[‘all_wheels_on_track’]</td>
 <td>Boolean</td>
@@ -577,8 +575,7 @@
 <td>Integer</td>
 <td>가까운 이전waypoint 인덱스와 가까운 다음 waypoint의 인덱스를 목록으로 반환합니다. params[‘closest_waypoints’][0] 는 가까운 이전 waypoint의 인덱스를 반환하고, params[‘closest_waypoints’][1] 는 가까운 다음 waypoint의 인덱스를 반환합니다.</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>보상 함수에서 사용할 수 있는 변수들을 설명하는 그림입니다.</p>
 <p><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/reward_function_parameters_illustration.png" target="_blank" rel="noopener"><img src="https://github.com/aws-samples/aws-deepracer-workshops/raw/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/reward_function_parameters_illustration.png" alt="rewardparams"></a></p>
 <p>아래는 re:Invent track 에서 사용 되는 waypoints에 대한 그림입니다. 보상 함수에서는 중심선의 waypoint만 사용할 수 있습니다. 아래의 그래프는 보상 함수에서 waypoint 값을 print한 후, 이를 plot하여 얻을 수 있습니다. 보상 함수에서 print 함수를 사용하면, 출력이 AWS RoboMaker의 로그에 저장됩니다. 다른 트랙들에 대해서도 마찬가지로 그려 볼 수 있습니다. 로그들에 대해서는 다음에 논의 할 것입니다.</p>
@@ -603,8 +600,7 @@ elif params[&apos;distance_from_center&apos;] &lt;= marker_3:
 else:
     reward = 1e-3  # likely crashed/ close to off track
 
-return float(reward)
-</code></pre><p>Hint: 보상을 0으로 주지 마십시오. 보상 값이 0일 때, 저희가 사용하는 옵티마이저(optimizer)가 어려움을 겪을 수 있습니다. 마지막 else 절에서 아주 작은 값을 사용하는 것은 그 이유 때문입니다.</p>
+return float(reward)</code></pre><p>Hint: 보상을 0으로 주지 마십시오. 보상 값이 0일 때, 저희가 사용하는 옵티마이저(optimizer)가 어려움을 겪을 수 있습니다. 마지막 else 절에서 아주 작은 값을 사용하는 것은 그 이유 때문입니다.</p>
 <p><strong>Example 2</strong>: 과도한 조향에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
 <p>def reward_function(params):<br>    ‘’’<br> Example that penalizes steering, which helps mitigate zig-zag behaviors<br> ‘’’</p>
 <pre><code># Calculate 3 marks that are farther and father away from the center line
@@ -629,8 +625,7 @@ ABS_STEERING_THRESHOLD = 15
 if abs(params[&apos;steering_angle&apos;]) &gt; ABS_STEERING_THRESHOLD:  # Only need the absolute steering angle
     reward *= 0.5
 
-return float(reward)      
-</code></pre><p><strong>Example 3</strong>: 저속 주행에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
+return float(reward)      </code></pre><p><strong>Example 3</strong>: 저속 주행에 페널티를 주고, 중심선을 따라가도록 유도하는 고급 보상 함수.</p>
 <p>def reward_function(params):<br>    ‘’’<br> Example that penalizes slow driving. This create a non-linear reward function so it may take longer to learn.<br> ‘’’</p>
 <pre><code># Calculate 3 marks that are farther and father away from the center line
 marker_1 = 0.1 * params[&apos;track_width&apos;]
@@ -655,8 +650,7 @@ SPEED_THRESHOLD = 2
 if params[&apos;speed&apos;] &lt; SPEED_THRESHOLD:
     reward *= 0.5
 
-return float(reward)
-</code></pre><p>이제 위의 예제들을 사용해 여러분의 보상 함수를 만들어 봅시다. 다음은 몇 가지 추가 Tip 입니다:</p>
+return float(reward)</code></pre><p>이제 위의 예제들을 사용해 여러분의 보상 함수를 만들어 봅시다. 다음은 몇 가지 추가 Tip 입니다:</p>
 <ul>
 <li>waypoints 를 사용하여 한 waypoint 에서 다음 waypoint 로의 방향을 계산할 수 있습니다.</li>
 <li>보상을 기하 급수로 조정할 수 있으나 최대 10,000으로 제한하십시오.</li>
@@ -667,7 +661,7 @@ return float(reward)
 <p>위의 첫 번째 예제를 사용한 보상 함수가 있습니다</p>
 <p><a href="https://github.com/aws-samples/aws-deepracer-workshops/blob/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/NewReward.png" target="_blank" rel="noopener"><img src="https://github.com/aws-samples/aws-deepracer-workshops/raw/master/Workshops/2019-AWSSummits-AWSDeepRacerService/Lab1/img/NewReward.png" alt="rewardfunction"></a></p>
 <h2 id="여기까지…"><a href="#여기까지…" class="headerlink" title="여기까지…."></a>여기까지….</h2><p>일단은 여기까지 복사 하고 이해 했습니다. 앞으로 더 빠른 Reward 알고리즘을 만들고 싶다면 혁신적인 알고리즘을 세팅하는 방법이 있지만 알고리즘을 잘 알지 못한다면 함수를 최대한 이용하여 만드는 것이 성능 향상에 도움이 됩니다.<br>만든 시뮬레이션의 성능을 확인하고 싶다면 위의 깃허브의 아래 부분에 시뮬레이션을 돌리는 방법이나 대회에 나가는 방법에 대해서 다루고 있습니다.<br>이상입니다.</p>
-<p><a href="https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0" target="_blank" rel="noopener">https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0</a></p>
+<p><a href="https://forums.aws.amazon.com/thread.jspa?threadID=297469&tstart=0" target="_blank" rel="noopener">https://forums.aws.amazon.com/thread.jspa?threadID=297469&amp;tstart=0</a></p>
 
       
     </div>
@@ -798,7 +792,7 @@ return float(reward)
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -876,7 +870,13 @@ return float(reward)
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -962,7 +962,7 @@ return float(reward)
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
 
 
 
