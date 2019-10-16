@@ -293,6 +293,253 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/project-euler-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hongmin Bae">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Kongs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/04/19/project-euler-1/" class="post-title-link" itemprop="url">project-euler-1</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-19 16:37:38 / Modified: 17:31:36" itemprop="dateCreated datePublished" datetime="2019-04-19T16:37:38+09:00">2019-04-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/project-euler/" itemprop="url" rel="index"><span itemprop="name">project-euler</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/04/19/project-euler-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/19/project-euler-1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/2019/04/19/project-euler-1/" class="leancloud_visitors" data-flag-title="project-euler-1">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Views: </span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://github.com/Baehongmin/Baehongmin.github.io/blob/master/images/math.jpg?raw=true" alt="수학화면"></p>
+<p>  우연히 웹서핑하다가 프로젝트 오일러라는 문제를 봐서 틈틈히 풀어볼까 합니다.<br>  어려워요.. ㅜㅜ 나는 진짜 알고리즘 OO 이구나… 라는 생각을 많이 하게 됩니다.  </p>
+<h1 id="Project-Euler"><a href="#Project-Euler" class="headerlink" title="Project Euler"></a>Project Euler</h1><blockquote>
+<p> 여기 실린 문제들을 풀려면 수학적인 지식이나 프로그래밍 솜씨 한가지만으로는 충분하지 않습니다. 수학적인 지식이 있다면 좀 더<br>우아하고 효율적인 방법을 찾을 수 있겠지만, 대부분의 경우 문제를 해결하려면 컴퓨터에 대한 지식과 프로그래밍 기법을 동원해야<br>합니다.</p>
+<p>새로운 분야에 대한 탐구심을 키워가고, 재미있게 즐기는 중에 새로운 개념을 하나 둘 알아갈 수 있는 장을 마련하자는 것이 이<br>프로젝트를 시작해서 지금까지 이르게 된 동기라고 할 수 있겠습니다.</p>
+</blockquote>
+<p><a href="http://euler.synap.co.kr/" target="_blank" rel="noopener">프로젝트 오일러 사이트</a></p>
+<p>저는… JAVA로 풀어보려고합니다. C가 원래 더 편했는데 C 툴을 안깔아놨네요.. ㅜㅜ</p>
+<h2 id="문제-1"><a href="#문제-1" class="headerlink" title="문제 1"></a>문제 1</h2><p>첫 번째 문제는 생각보다 쉽긴하네요 그냥 for/if 문으로 풀어보았습니다.<br>다른방법으로 푸신 분들도 많긴하던데…. 신기합니다. 가장 심플하게 풀어보았습니다.</p>
+<pre><code>//1000보다 작은 자연수 중에서 3 또는 5의 배수를 모두 더하면?
+int result = 0;
+for(int i=0;i&lt;1000;i++) {
+    if(i%3 == 0||i%5 == 0) {
+        result = result + i;
+    }
+}
+System.out.println(result);</code></pre><h2 id="문제-2"><a href="#문제-2" class="headerlink" title="문제 2"></a>문제 2</h2><p>정말 피보나치 수열이 어렵… 난 수학이 너무어렵…. 무슨말인지도 모르겟지만 풀긴해봤습니다.</p>
+<pre><code>//피보나치 수열의 짝수이면서 4백만 이하인 모든항
+int pre = 1, sum = 0;
+for(int i = 1; i&lt;4000000;) {
+    int next = pre + i;
+    pre = i;
+    i = next;
+    System.out.println(next);
+    if(i%2==0){
+        sum += next;
+    }
+}
+System.out.println(sum);</code></pre><h2 id="문제-3"><a href="#문제-3" class="headerlink" title="문제 3"></a>문제 3</h2><pre><code>//소인수 중에서 가장 큰 수 구하기 에라토스테네스의 체 알고리즘
+// ArrayList로 구현
+ArrayList&lt;Boolean&gt; primeList;
+int n = 10000;
+// n+1만큼 할당
+primeList = new ArrayList&lt;Boolean&gt;(n+1);
+// 0번째와 1번째를 소수 아님으로 처리
+primeList.add(false);
+primeList.add(false);
+// 2~ n 까지 소수로 설정
+for(int i=2; i&lt;=n; i++ )
+    primeList.add(i, true);
+// 2 부터  ~ i*i &lt;= n
+// 각각의 배수들을 지워간다.
+for(int i=2; (i*i)&lt;=n; i++){
+    if(primeList.get(i)){
+        for(int j = i*i; j&lt;=n; j+=i) {
+            primeList.set(j, false);
+        }
+    }
+}
+long k = 600851475143L;
+StringBuffer sb = new StringBuffer();
+for(int i=0; i&lt;=n; i++){
+    if(primeList.get(i) == true){
+        if(k%i == 0) {
+            k = k/i;
+        }
+        if(k == 1) {
+            sb.append(i);
+            sb.append(&quot; end&quot;);
+            break;
+        }
+    }
+}
+System.out.println(sb.toString());</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://baehongmin.github.io/2019/04/19/environmental-sensor-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2099,7 +2346,7 @@ v8.11.3</code></pre><h3 id="이후-해야될-작업"><a href="#이후-해야될-
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2183,7 +2430,11 @@ v8.11.3</code></pre><h3 id="이후-해야될-작업"><a href="#이후-해야될-
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
